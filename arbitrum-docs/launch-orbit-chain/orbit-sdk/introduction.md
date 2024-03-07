@@ -63,8 +63,9 @@ Once the chain has been deployed, it needs to be initialized. This step requires
 ### 3. Token Bridge Deployment
 
 In order to enable`ERC-20` tokens in and out of your orbit chain, you will need to deploy a bridge instance, which consists of a set of contracts.
-To do this, you can follow the steps outlined in the [token bridge contract deployment guide](token-bridge-deployment.md)
-You can learn more about our bridge design in the [`ERC-20` token bridge architectural orverview](../../for-devs/concepts/token-bridge/token-bridge-erc20.mdx) 
+To do this, you can follow the steps outlined in the [token bridge contract deployment guide](token-bridge-deployment.md).
+
+You can also learn more about our bridge design in the [`ERC-20` token bridge orverview](../../for-devs/concepts/token-bridge/token-bridge-erc20.mdx) 
 
 ### 4. Orbit Chain Configuration
 
