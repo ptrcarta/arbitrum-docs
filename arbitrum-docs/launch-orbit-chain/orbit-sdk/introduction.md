@@ -10,22 +10,22 @@ sidebar_position: 0
 
 # Welcome to the Arbitrum Orbit SDK
 
-Dive into the forefront of decentralized blockchain development with the Arbitrum Orbit SDK, a comprehensive toolkit designed for developers eager to explore the innovative Arbitrum Orbit platform. This SDK facilitates the creation and management of your own Orbit chain using the advanced capabilities of Viem, a modern alternative to traditional Ethereum libraries like ethers.js and web3.js.
+Arbitrum Orbit SDK is a comprehensive toolkit designed for developers interested in building on Arbitrum Orbit platform. This SDK facilitates the creation and management of your own Orbit chain using the advanced capabilities of Viem, a modern alternative to traditional Ethereum libraries like ethers.js and web3.js.
 
 ## Arbitrum Orbit chains
 
-With the Arbitrum Orbit SDK, you have the flexibility to establish your Orbit chain as a Layer 3 (L3) chain settling transactions with any Layer 2 (L2) chains, or as a Layer 2 (L2) chain directly settling on Layer 1 (L1) chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
+With the Arbitrum Orbit SDK, you have the flexibility to establish your <a data-quicklook-from="arbitrum-orbit">Orbit</a> chain as a <a data-quicklook-from="layer-3-l3">Layer 3 (L3)</a> chain settling transactions with any Layer 2 (L2) chains, or as a <a data-quicklook-from="layer-2-l2">Layer 2 (L2)</a> chain directly settling on <a data-quicklook-from="layer-1-l1">Layer 1 (L1)</a> chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
 
 ### Enhanced Development Experience
 
 The SDK is developed using TypeScript, providing a strong foundation for your development efforts. At the core of our SDK is Viem, which elevates the development experience by offering a streamlined, efficient, and modular approach to interacting with Ethereum's blockchain and smart contracts. Whether you're a seasoned developer familiar with ethers.js or new to blockchain development, Viem and the Arbitrum Orbit SDK offer a smooth transition and easy comparison to understand the benefits and similarities between the platforms, especially with resources like [Viem's ethers.js migration guide](https://viem.sh/docs/ethers-migration.html).
 
 ### Capabilities of the SDK:
-- **Configuration and Deployment**: Simplify the process of configuring and deploying the core contracts needed for an Orbit chain.
-- **Initialization and Management**: After deployment, utilize the SDK to initialize your chain and adjust configuration parameters as necessary.
-- **Ongoing Support and Updates**: Look forward to future releases that will bring new features, such as tools for creating custom dashboards and monitoring systems for your Orbit chain.
+- **Configuration and Deployment**: Simplifies the process of configuring and deploying the core contracts needed for an Orbit chain.
+- **Initialization and Management**: After deployment, the SDK helps you initialize your chain and adjust configuration parameters as necessary.
+- **Ongoing Support and Updates**: Future releases will bring new features, such as tools for creating custom dashboards and monitoring systems for your Orbit chain.
 
-By choosing the Arbitrum Orbit SDK, you're not just accessing a set of development tools; you're unlocking a universe of opportunities to create bespoke blockchain projects tailored to your needs. Stay tuned for more exciting updates and features as we continue to enhance the Arbitrum Orbit SDK, making it an even more powerful resource for developers.
+ Feel free to return to this page regularly for updates and new features as we improve Orbit SDK.
 
 Below, you will find detailed information about the steps for setting up an Orbit chain and how to utilize the Orbit SDK throughout the process:
 
@@ -33,7 +33,7 @@ Below, you will find detailed information about the steps for setting up an Orbi
 
 A primary function of the Orbit SDK is the deployment of a new Orbit chain. The initial step in setting up an Orbit chain involves determining the type that best fits your needs. We offer four distinct types of Orbit chains:
 
-1. **Rollup Orbit Chains**: These are the most straightforward Orbit chains. In this type, transaction data is batched, compressed, and posted to the parent chain, akin to the Arbitrum One chain as a rollup chain. Detailed steps for deploying a rollup chain can be found [here](deployment-rollup.md).
+1. **Rollup Orbit Chains**: These are the most straightforward Orbit chains. In this type, transaction data is batched, compressed, and posted to the parent chain, akin to the <a data-quicklook-from="arbitrum-one">Arbitrum One</a> chain as a rollup chain. You can find detailed instructions on the [orbit rollup deployment page](deployment-rollup.md).
 
 2. **Anytrust Orbit Chains**: Anytrust Orbit chains share a similar logic with rollup chains but with a key difference: batches are not posted directly to the parent chain. Instead, they are stored by a Data Availability Committee (DAC) to reduce transaction fees. The main differences between an Anytrust chain and a rollup chain are:
    
