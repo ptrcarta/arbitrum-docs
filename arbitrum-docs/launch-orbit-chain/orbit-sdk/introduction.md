@@ -53,8 +53,7 @@ Custom Gas Token Orbit chains can only be Anytrust chains; a Rollup Orbit chain 
 
 :::
 
-
-4. **Orbit Chains with Outsourced DA Layers**: These chains leverage third-party Data Availability (DA) layers for transmitting transaction data instead of posting them directly to the parent chain (as in rollup chains) or storing them on a DAC (as in Anytrust chains). Solutions like Celestia can be used to support Orbit chains for this purpose.
+4. **Orbit Chains with Outsourced DA Layers**: These chains leverage third-party Data Availability (DA) layers to transmit transaction data instead of posting it directly to the parent chain (as in rollup chains) or storing it on a DAC (as in Anytrust chains). Solutions like Celestia can support Orbit chains for this purpose.
 
 ### 2. Node Configuration Preparation
 
@@ -62,8 +61,8 @@ Once the chain has been deployed, it needs to be initialized. This step requires
 
 ### 3. Token Bridge Deployment
 
-In order to enable`ERC-20` tokens in and out of your orbit chain, you will need to deploy a bridge instance, which consists of a set of contracts.
-To do this, you can follow the steps outlined in the [token bridge contract deployment guide](token-bridge-deployment.md).
+To enable `ERC-20` tokens in and out of your orbit chain, you will need to deploy a bridge instance, which consists of a set of contracts.
+To do this, follow the steps outlined in the [token bridge contract deployment guide](token-bridge-deployment.md).
 
 You can also learn more about our bridge design in the [`ERC-20` token bridge orverview](../../for-devs/concepts/token-bridge/token-bridge-erc20.mdx) 
 
