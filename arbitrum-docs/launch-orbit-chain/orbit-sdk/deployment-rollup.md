@@ -8,20 +8,31 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 1
 ---
 
-This section is tailored for developers eager to initiate a `Rollup Orbit` chain. The deployment process involves a series of essential steps, meticulously outlined in the forthcoming documentation.
+This section explains how to to initiate a <a data-quicklook-from="arbitrum-rollup-chain">`Rollup Orbit`</a> chain step by step.
 
-For those inclined towards a hands-on approach, preferring to dive directly into coding without an extensive tutorial, we recommend exploring [this example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) found in the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.
+For those who prefer diving directly into coding without an extensive tutorial, we recommend exploring [this example code](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) taken from the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.
 
 ### Rollup Orbit chain deployment
-The primary and most crucial function of our Orbit SDK is to streamline the deployment of core contracts essential for Orbit chains. Each Orbit chain requires a set of fundamental contracts to be deployed on its parent chain. This set includes Bridge contracts, Rollup contracts, and contracts designed to handle fraud proofs. These smart contracts are the backbone of the Arbitrum Nitro stack, ensuring its robust and efficient operation. You can explore these contracts in detail in the GitHub repository: [OffchainLabs/nitro-contracts](https://github.com/OffchainLabs/nitro-contracts). Beyond the deployment stage, the Orbit SDK also takes charge of the necessary initializations and configurations. This means that after the core contracts are successfully deployed, the SDK facilitates their setup and fine-tuning, ensuring that your Orbit chain is not only up and running but also optimized for performance and functionality. This comprehensive approach by the Orbit SDK makes the process of launching and managing an Orbit chain more accessible and efficient.
+The main benefit of our Orbit SDK is to streamline the deployment of Orbit chains core contracts. 
 
-To streamline the deployment process and make it more efficient, we've developed a key smart contract known as the [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/main/src/rollup/RollupCreator.sol). This contract plays a vital role in setting up Orbit chains and has two primary functions:
+Each Orbit chain requires a set of fundamental contracts to be deployed on its parent chain. This set includes:
+- Bridge contracts 
+- Rollup contracts
+- Contracts handling <a data-quicklook-from="fraud-proof">fraud proofs</a> 
 
-1. **setTemplates:** This function is essential for maintaining the latest versions of each core contract, such as the Bridge contract. By using [setTemplates](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L63C14-L63C26), we can specify which versions of these contracts should be used in the deployment process. It ensures that every new Orbit chain is set up with the most up-to-date and efficient contracts available.
+They are the backbone of the Arbitrum Nitro stack, ensuring its robust and efficient operation. You can explore these contracts in detail in the [nitro-contracts GitHub repository](https://github.com/OffchainLabs/nitro-contracts). 
 
-2. **createRollup:** The [createRollup](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) function is critical for actually deploying a new set of core contracts for a desired Orbit chain. It utilizes the templates set by the **setTemplates** function and initializes them based on the provided configurations. This function requires specific inputs from the chain deployer, which are crucial for customizing the deployment to meet the unique needs of each Orbit chain.
+Beyond the deployment stage, the Orbit SDK also takes charge of the necessary initializations and configurations. This means that once the core contracts have been successfully deployed, the SDK facilitates their setup and fine-tuning, ensuring that your Orbit chain is up and running and optimized for performance and functionality.
 
-These functionalities within the RollupCreator contract significantly simplify the deployment process, providing a smoother and more user-friendly experience for chain deployer. We will delve into the specifics of the inputs and configurations required for the createRollup function and how to use Orbit-SDK for chain deployment in the following sections.
+To streamline the deployment process and make it more efficient, we've developed a key smart contract called [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/main/src/rollup/RollupCreator.sol). This contract plays a vital role in setting up Orbit chains and has two primary functions:
+
+1. **`setTemplates`:** This function is essential for maintaining the latest versions of each core contract, such as the Bridge contract. By using [setTemplates](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L63C14-L63C26), we can specify which versions of these contracts should be used in the deployment process. It ensures that every new Orbit chain is set up with the most up-to-date and efficient contracts available.
+
+2. **`createRollup`:** The [createRollup](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) function is critical for deploying a new set of core contracts for a desired Orbit chain. It utilizes the templates set by the `setTemplates` function and initializes them based on the provided configurations. This function requires specific inputs from the chain deployer, which are crucial for customizing the deployment to meet the unique needs of each Orbit chain.
+
+These functionalities within the RollupCreator contract greatly simplify the deployment process, providing chain deployers with a smoother and more user-friendly experience. 
+
+In the following sections, we will go into the specifics of the inputs and configurations required for the createRollup function and how to use Orbit-SDK for chain deployment.
 
 ### Rollup Deployment Parameters Configuration
 
