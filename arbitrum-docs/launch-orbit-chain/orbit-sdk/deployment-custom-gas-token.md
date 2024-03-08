@@ -1,5 +1,5 @@
 ---
-title: 'Arbitrum Orbit SDK'
+title: 'Custom Gas Token Orbit Deployment'
 sidebar_label: 'Custom Gas Token Orbit Deployment'
 description: 'Arbitrum SDK '
 author: Mehdi Salehi
