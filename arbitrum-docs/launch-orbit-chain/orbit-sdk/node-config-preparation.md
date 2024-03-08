@@ -1,5 +1,5 @@
 ---
-title: 'Arbitrum Orbit SDK'
+title: 'Node Config Generation'
 sidebar_label: 'Node Config Generation'
 description: 'Arbitrum SDK '
 author: Mehdi Salehi
