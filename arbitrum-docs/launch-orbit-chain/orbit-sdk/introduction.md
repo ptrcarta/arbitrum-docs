@@ -68,4 +68,5 @@ You can also learn more about our bridge design in the [`ERC-20` token bridge or
 
 ### 4. Orbit Chain Configuration
 
-After deploying the chain, initializing it, and deploying the token bridge, the chain owner must configure their Orbit chain based on the desired setup. We detail how you can configure your Orbit chain on [this page](orbit-chain-configuration.md).
+After deploying the chain, initializing it, and deploying the token bridge, the chain owner must configure their Orbit chain based on the desired setup. 
+Read more on [how to configure your Orbit chain](orbit-chain-configuration.md).
