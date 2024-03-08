@@ -36,9 +36,10 @@ In the following sections, we will go into the specifics of the inputs and confi
 
 ### Rollup Deployment Parameters Configuration
 
-The `createRollup` function in the [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) is a crucial component for deploying Orbit chains. It takes a complex input named `deployParams`, structured to encapsulate various configurable parameters essential for customizing the Orbit chain. Let's break down the structure of these parameters:
+The `createRollup` function in the [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) is a crucial component for deploying Orbit chains. It takes a complex input named `deployParams`, structured to encapsulate various configurable parameters customizing the Orbit chain. Let's break down the structure of these parameters:
 
-1. **RollupDeploymentParams Structure:**
+1. **`RollupDeploymentParams` struct:**
+
    ```solidity
    struct RollupDeploymentParams {
        Config config;
@@ -50,9 +51,10 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
        uint256 maxFeePerGasForRetryables;
    }
    ```
-   This structure includes key settings like the chain configuration (`Config`), validator addresses, maximum data size, the native token of the chain, and more.
+   This solidity struct includes key settings like the chain configuration (`Config`), validator addresses, maximum data size, the native token of the chain, and more.
 
-2. **Config Structure:**
+2. **`Config` Struct:**
+
    ```solidity
    struct Config {
        uint64 confirmPeriodBlocks;
@@ -68,7 +70,7 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
        ISequencerInbox.MaxTimeVariation sequencerInboxMaxTimeVariation;
    }
    ```
-   The `Config` structure defines the core settings of the chain, including block confirmation periods, stake parameters, and the chain ID.
+   The `Config` struct defines the chain's core settings, including block confirmation periods, stake parameters, and the chain ID.
 
 3. **MaxTimeVariation Structure:**
    ```solidity
@@ -116,26 +118,26 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
      };
    }
    ```
-    Out of these parameters, a few are particularly important and are likely to be configured by the chain owner: **chainId**, **DataAvailabilityCommittee**, **InitialChainOwner**, **MaxCodeSize** and **MaxInitCodeSize**. The other parameters, while part of the chainConfig, typically use default values and are less frequently modified. In the [Chain Config Parameter](#chain-config-parameter)  section, we will delve into each of these important parameters in more detail. Additionally, we'll guide you through using the Orbit SDK to effectively set and customize these configurations, ensuring that your Orbit chain is tailored to your specific requirements and operational needs.
+    Out of these parameters, a few are particularly important and are likely to be configured by the chain owner: **chainId**, **DataAvailabilityCommittee**, **InitialChainOwner**, **MaxCodeSize**, and **MaxInitCodeSize**. While part of the chainConfig, the other parameters typically use default values and are less frequently modified. We will detail these essential parameters in the [Chain Config Parameter](#chain-config-parameter) section. Additionally, we'll guide you through using the Orbit SDK to effectively set and customize these configurations, ensuring that your Orbit chain is tailored to your specific requirements and operational needs.
 
-All the parameters explained in this section are customizable, allowing the chain deployer to either stick with default settings or specify new values. In the upcoming sections, we will dive deeper into what each of these parameters represents and how you can utilize the Orbit SDK to configure them effectively for your Orbit chain deployment.
+All the parameters explained in this section are customizable, allowing the chain deployer to stick with default settings or specify new values. In the upcoming sections, we will dive deeper into what each parameter represents and how you can utilize the Orbit SDK to configure them effectively for your Orbit chain deployment.
 
 <h3 id="chain-config-parameter">Chain Config Parameter</h3>
 
 
-In this section, we provide detailed explanations of key configurable parameters within the `chainConfig` for Orbit chain deployment and guide you on how to utilize the Orbit SDK to generate the desired `chainConfig` JSON string. These parameters play a crucial role in defining the characteristics and operational parameters of your Orbit chain. Here are the parameters you need to know about:
+In this section, we provide detailed explanations of key configurable parameters within the `chainConfig` for Orbit chain deployment and guide you on utilizing the Orbit SDK to generate the desired `chainConfig` JSON string. These parameters play an important role in defining your Orbit chain's characteristics and operational parameters. Here are the parameters you need to know about:
 
 1. **chainId**: This is the unique identifier for your Orbit chain. It differentiates your chain from others in the ecosystem.
 
 2. **DataAvailabilityCommittee**: This boolean parameter determines the nature of your Orbit chain. Setting it to `False` indicates a Rollup chain, whereas `True` configures it as an Anytrust chain.
 
-3. **InitialChainOwner**: This address is crucial as it denotes who initially owns and has control over the chain.
+3. **InitialChainOwner**: This address is crucial as it denotes who initially owns and controls the chain.
 
 4. **MaxCodeSize**: This parameter sets the maximum size for smart contract bytecodes on the Orbit chain. For comparison, the Ethereum mainnet has a limit of 24,576 Bytes.
 
-5. **MaxInitCodeSize**: Similar to `MaxCodeSize`, this parameter defines the maximum size for the **initialization** code on your Orbit chain. The Ethereum mainnet limit is 49,152 Bytes for reference.
+5. **MaxInitCodeSize**: Similar to `MaxCodeSize`, this parameter defines the maximum size for your Orbit chain's **initialization** code. The Ethereum mainnet limit is 49,152 Bytes for reference.
 
-To make the configuration process user-friendly, the Orbit SDK includes an API named `prepareChainConfig`. This API allows you to input the above parameters and receive a `chainConfig` JSON string in return. Any parameters not provided will default to standard values, which are detailed in the [Orbit SDK](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1f251f76a55bc1081f50938b0aa9f7965660ebf7/src/prepareChainConfig.ts#L3-L31).
+To make the configuration process user-friendly, the Orbit SDK includes an API named `prepareChainConfig`. This API allows you to input the above parameters and receive a `chainConfig` JSON string in return. Any parameters not provided will default to standard values, which are detailed in the [Orbit SDK documentation](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1f251f76a55bc1081f50938b0aa9f7965660ebf7/src/prepareChainConfig.ts#L3-L31).
 
 Here is an example of how to use the `prepareChainConfig` API in the Orbit SDK to set up a chain with a specific `chainId`, an `InitialChainOwner` (denoted as `deployer_address`), and configure it as an Rollup chain:
 
@@ -153,32 +155,38 @@ This API simplifies the process of configuring your Orbit chain, ensuring that y
 ### Rollup Configuration Parameters
 In this section, we'll provide detailed explanations of the various chain configuration parameters used in the deployment of Orbit chains. Understanding these parameters is key to customizing your Orbit chain to suit your specific needs.
 
-1. **batchPoster**: This parameter sets the batch poster address for your Orbit chain. The batch poster account plays a crucial role in batching and compressing transactions on the Orbit chain and transmitting them back to the parent chain.
+1. **`batchPoster`**: This parameter sets the batch poster address for your Orbit chain. The batch poster account plays a crucial role in batching and compressing transactions on the Orbit chain and transmitting them back to the parent chain.
 
-2. **validators**: This parameter is an array of validator addresses. Validators are responsible for validating the chain state and posting Rollup Blocks (RBlocks) back to the parent chain. They also monitor the chain and initiate challenges against potentially faulty RBlocks submitted by other validators.
+2. **`validators`**: This parameter is an array of validator addresses. Validators are responsible for validating the chain state and posting Rollup Blocks (RBlocks) back to the parent chain. They also monitor the chain and initiate challenges against potentially faulty RBlocks submitted by other validators.
 
-3. **nativeToken**: This parameter determines the token used for paying gas fees on the Orbit chain. It can be set to ETH for regular chains, or to any ERC20 token for **gas fee token network** Orbit chains.
+3. **`nativeToken`**: This parameter determines the token used for paying gas fees on the Orbit chain. It can be set to ETH for regular chains, or to any ERC20 token for **gas fee token network** Orbit chains.
 
-4. **confirmPeriodBlocks**: This parameter sets the challenge period in terms of blocks, which is the time allowed for validators to dispute or challenge state assertions. On Arbitrum One and Arbitrum Nova, this is currently set to approximately 7 days in block count.
+4. **`confirmPeriodBlocks`**: This parameter sets the challenge period in terms of blocks, which is the time allowed for validators to dispute or challenge state assertions. On Arbitrum One and Arbitrum Nova, this is currently set to approximately seven days in block count.
 
-5. **stakeToken and baseStake**: Every Orbit chain requires at least one validator node. To post state assertions on the base chain, validators must stake a certain amount as an incentive for honest participation. The base stake parameter specifies the quantity of stake token (either ETH or an ERC-20 token) required for validators to post state assertions of your Orbit chain on the base chain's rollup contracts.
+5. **`stakeToken` and baseStake**: Every Orbit chain requires at least one validator node. To post state assertions on the base chain, validators must stake a certain amount to incentivize honest participation. The base stake parameter specifies the quantity of stake token (either ETH or an ERC-20 token) required for validators to post state assertions of your Orbit chain on the base chain's rollup contracts.
 
-6. **owner**: This is the account address responsible for deploying, owning, and managing your Orbit chain's base contracts on its parent chain.
+6. **`owner`**: This is the account address responsible for deploying, owning, and managing your Orbit chain's base contracts on its parent chain.
 
-7. **chainId**: This parameter sets the unique chain ID for your Orbit chain 
+7. **`chainId`**: This parameter sets the unique chain ID for your Orbit chain 
 
-**Note** that chainId and owner parameters must be equal to the chain ID and InitialOwner defined on chainConfig section.
+:::note
 
-While other configurable parameters exist, they are set to defaults, and it's generally not anticipated that a chain deployer would need to modify them. However, if you believe there's a need to alter any other parameters not listed here, please feel free to contact us for further details and support.
+ChainId and owner parameters must be equal to the chain ID and InitialOwner defined in the `chainConfig` section.
+
+:::
+
+While other configurable parameters exist, they are set to defaults, and it's generally not anticipated that a chain deployer would need to modify them. However, if you believe there's a need to alter any other parameters not listed here, please feel free to [contact us on our Discord server](https://discord.com/channels/585084330037084172/1116812793606328340/1205801459518804018) for further details and support.
+
 
 <h3 id="rollup-config-param">Configuration of Rollup Params and Deployment on Orbit SDK</h3>
 
 In order to facilitate the configuration and deployment of Rollup parameters for an Orbit chain, the Orbit SDK provides two essential APIs: `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`. These APIs simplify the process of setting up and deploying the core contracts necessary for an Orbit chain.
 
-1. **createRollupPrepareConfig API**: 
-   This API is designed to take parameters as defined in the Config structure and fill in the rest with default values. It outputs a complete Config structure that is ready for use. 
+1. **`createRollupPrepareConfig` API**: 
+
+   This API is designed to take parameters defined in the Config structure and fill in the rest with default values. It outputs a complete Config structure that is ready for use. 
    
-   For example, to create a Config structure with a specific chain ID (`chainId`), an owner address (`deployer_address`), and a `chainConfig` as described in the [previous section](#chain-config-parameter), you would use the Orbit SDK as follows:
+   For example, to create a Config structure with a specific chain ID (`chainId`), an owner address (`deployer_address`), and a `chainConfig` as described in the previous section, you would use the Orbit SDK as follows:
 
    ```js
    import { createRollupPrepareConfig } from '@arbitrum/orbit-sdk';
@@ -190,10 +198,11 @@ In order to facilitate the configuration and deployment of Rollup parameters for
    });
    ```
 
-2. **createRollupPrepareTransactionRequest API**: 
-   This API accepts parameters defined in the RollupDeploymentParams structure, applying defaults where necessary, and constructs the RollupDeploymentParams. This structure is then used to create a raw transaction which call the `createRollup` function of the RollupCreator contract. As discussed in previous sections, this function deploys and initializes all core Orbit contracts.
+2. **`createRollupPrepareTransactionRequest` API**: 
 
-   For instance, to deploy using the Orbit SDK with a Config equal to `config`, a batchPoster, and an array of validators such as `[validator]`, the process would look like this:
+   This API accepts parameters defined in the `RollupDeploymentParams` structure, applying defaults where necessary, and constructs the `RollupDeploymentParams`. This structure is then used to create a raw transaction which call the `createRollup` function of the RollupCreator contract. As discussed in previous sections, this function deploys and initializes all core Orbit contracts.
+
+   For instance, to deploy using the Orbit SDK with a Config equal to `config`, a batchPoster, and a set of validators such as `[validator]`, the process would look like this:
 
    ```js
    import { createRollupPrepareTransactionRequest } from '@arbitrum/orbit-sdk';
@@ -216,7 +225,7 @@ These APIs in the Orbit SDK make the complex process of configuring and deployin
 
 Once you've successfully deployed your Orbit chain, the next step is to retrieve detailed information about the deployment. The Orbit SDK provides a convenient way to do this through the `createRollupPrepareTransactionReceipt` API. This API allows you to extract vital data about the core contracts and other important aspects of your newly deployed Orbit chain.
 
-After you send the signed transaction and receive the transaction receipt, you can use the `createRollupPrepareTransactionReceipt` API to parse this receipt and extract the relevant data. This process will provide you with comprehensive details about the deployed chain, such as contract addresses, configuration settings, and other essential information.
+After sending the signed transaction and receiving the transaction receipt, you can use the `createRollupPrepareTransactionReceipt` API to parse this receipt and extract the relevant data. This process will provide comprehensive details about the deployed chain, such as contract addresses, configuration settings, and other essential information.
 
 Here's an example of how to use the Orbit SDK to get data from a deployed Orbit chain:
 
