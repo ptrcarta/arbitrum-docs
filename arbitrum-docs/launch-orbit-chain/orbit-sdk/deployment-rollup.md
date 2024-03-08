@@ -28,7 +28,7 @@ These functionalities within the RollupCreator contract significantly simplify t
 The `createRollup` function in the [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) is a crucial component for deploying Orbit chains. It takes a complex input named `deployParams`, structured to encapsulate various configurable parameters essential for customizing the Orbit chain. Let's break down the structure of these parameters:
 
 1. **RollupDeploymentParams Structure:**
-   ```bash
+   ```solidity
    struct RollupDeploymentParams {
        Config config;
        address batchPoster;
@@ -42,7 +42,7 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
    This structure includes key settings like the chain configuration (`Config`), validator addresses, maximum data size, the native token of the chain, and more.
 
 2. **Config Structure:**
-   ```bash
+   ```solidity
    struct Config {
        uint64 confirmPeriodBlocks;
        uint64 extraChallengeTimeBlocks;
@@ -60,7 +60,7 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
    The `Config` structure defines the core settings of the chain, including block confirmation periods, stake parameters, and the chain ID.
 
 3. **MaxTimeVariation Structure:**
-   ```bash
+   ```solidity
    struct MaxTimeVariation {
        uint256 delayBlocks;
        uint256 futureBlocks;
@@ -72,7 +72,7 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
 4. **chainConfig:**
 
     The `chainConfig` parameter within the `Config` structure, is a critical component for customizing the Orbit chain. It's a stringified JSON object containing various configuration options that dictate how the Orbit chain behaves and interacts with the parent chain network. Here's a brief overview of the JSON structure:
-   ```bash
+   ```solidity
    {
      chainId: number;
      homesteadBlock: number;
@@ -128,7 +128,7 @@ To make the configuration process user-friendly, the Orbit SDK includes an API n
 
 Here is an example of how to use the `prepareChainConfig` API in the Orbit SDK to set up a chain with a specific `chainId`, an `InitialChainOwner` (denoted as `deployer_address`), and configure it as an Rollup chain:
 
-```bash
+```js
 import { prepareChainConfig } from '@arbitrum/orbit-sdk';
 
 const chainConfig = prepareChainConfig({
@@ -169,7 +169,7 @@ In order to facilitate the configuration and deployment of Rollup parameters for
    
    For example, to create a Config structure with a specific chain ID (`chainId`), an owner address (`deployer_address`), and a `chainConfig` as described in the [previous section](#chain-config-parameter), you would use the Orbit SDK as follows:
 
-   ```bash
+   ```js
    import { createRollupPrepareConfig } from '@arbitrum/orbit-sdk';
 
    const config = createRollupPrepareConfig({
@@ -184,7 +184,7 @@ In order to facilitate the configuration and deployment of Rollup parameters for
 
    For instance, to deploy using the Orbit SDK with a Config equal to `config`, a batchPoster, and an array of validators such as `[validator]`, the process would look like this:
 
-   ```bash
+   ```js
    import { createRollupPrepareTransactionRequest } from '@arbitrum/orbit-sdk';
 
    const request = await createRollupPrepareTransactionRequest({
@@ -209,7 +209,7 @@ After you send the signed transaction and receive the transaction receipt, you c
 
 Here's an example of how to use the Orbit SDK to get data from a deployed Orbit chain:
 
-```bash
+```js
 import { createRollupPrepareTransactionReceipt } from '@arbitrum/orbit-sdk';
 
 const data = createRollupPrepareTransactionReceipt(txReceipt);
