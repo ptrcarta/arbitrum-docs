@@ -1,5 +1,5 @@
 ---
-title: 'Arbitrum Orbit SDK'
+title: 'Orbit Chain Configuration'
 sidebar_label: 'Orbit Chain Configuration'
 description: 'Arbitrum SDK '
 author: Mehdi Salehi
