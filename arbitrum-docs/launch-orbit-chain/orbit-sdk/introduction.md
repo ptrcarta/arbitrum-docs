@@ -14,7 +14,7 @@ Arbitrum Orbit SDK is a comprehensive toolkit designed for developers interested
 
 ## Arbitrum Orbit chains
 
-With the Arbitrum Orbit SDK, you have the flexibility to establish your <a data-quicklook-from="arbitrum-orbit">Orbit</a> chain as a <a data-quicklook-from="layer-3-l3">Layer 3 (L3)</a> chain settling transactions with any Layer 2 (L2) chains, or as a <a data-quicklook-from="layer-2-l2">Layer 2 (L2)</a> chain directly settling on <a data-quicklook-from="layer-1-l1">Layer 1 (L1)</a> chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
+With the Arbitrum Orbit SDK, you have the flexibility to spin up your <a data-quicklook-from="arbitrum-orbit">Orbit</a> chain as a <a data-quicklook-from="layer-3-l3">Layer 3 (L3)</a> chain settling transactions with any Layer 2 (L2) chains, or as a <a data-quicklook-from="layer-2-l2">Layer 2 (L2)</a> chain directly settling on <a data-quicklook-from="layer-1-l1">Layer 1 (L1)</a> chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
 
 ### Enhanced Development Experience
 
