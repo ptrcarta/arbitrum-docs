@@ -10,7 +10,7 @@ sidebar_position: 2
 
 This section explains how to to initiate a  <a data-quicklook-from="arbitrum-anytrust-chain">`Anytrust Orbit`</a> chain step by step.
 
-For those who prefer an immediate hands-on coding experience, we recommend starting with [this example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain. The process of Anytrust chain deployment is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
+For those who prefer an immediate hands-on coding experience, we recommend starting with [the `set-valid-keyset` example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain. The process of Anytrust chain deployment is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
 
 
 ### Anytrust Deployment
@@ -53,7 +53,7 @@ For an Anytrust chain, you need to set the `DataAvailabilityCommittee` to **true
 
 Here’s an example of how to configure the `chainConfig` for an Anytrust chain using the Orbit SDK:
 
-```bash
+```js
 import { prepareChainConfig } from '@arbitrum/orbit-sdk';
 
 const chainConfig = prepareChainConfig({
@@ -80,7 +80,7 @@ The procedure for retrieving information about your deployed Anytrust Orbit chai
 
 To extract detailed information about your Anytrust Orbit chain post-deployment, you will use the same API and steps as you would for a Rollup Orbit chain. Here's a reminder of the example:
 
-```bash
+```js
 import { createRollupPrepareTransactionReceipt } from '@arbitrum/orbit-sdk';
 
 const data = createRollupPrepareTransactionReceipt(txReceipt);
@@ -97,7 +97,7 @@ To facilitate this, we provide an API in Orbit SDK named `setValidKeysetPrepareT
 
 Here's an example of how you can use the Orbit SDK to set the keyset:
 
-```bash
+```js
 const txRequest = await setValidKeysetPrepareTransactionRequest({
   coreContracts: {
     upgradeExecutor: 'upgradeExecutor_address',
