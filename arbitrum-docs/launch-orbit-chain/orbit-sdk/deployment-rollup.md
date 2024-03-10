@@ -10,7 +10,7 @@ sidebar_position: 1
 
 This section explains how to to initiate a <a data-quicklook-from="arbitrum-rollup-chain">`Rollup Orbit`</a> chain step by step.
 
-For those who prefer diving directly into coding without an extensive tutorial, we recommend starting with [this example code](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) taken from the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.
+For those who prefer diving directly into coding without an extensive tutorial, we recommend exploring [this example code](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) taken from the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.
 
 ### Rollup Orbit chain deployment
 The main benefit of our Orbit SDK is to streamline the deployment of Orbit chains core contracts. 
