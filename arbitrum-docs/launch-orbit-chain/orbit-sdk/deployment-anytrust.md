@@ -10,7 +10,11 @@ sidebar_position: 2
 
 This section explains how to to initiate a  <a data-quicklook-from="arbitrum-anytrust-chain">`Anytrust Orbit`</a> chain step by step.
 
-For those who prefer an immediate hands-on coding experience, we recommend starting with [the `set-valid-keyset` example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain. The process of Anytrust chain deployment is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
+ [the `set-valid-keyset` example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain. 
+
+  - <small>For those who prefer an immediate hands-on coding experience, we recommend starting with <a href="https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts">`set-valid-keyset` example</a> located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain.</small>
+
+The process of Anytrust chain deployment is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
 
 
 ### Anytrust Deployment
