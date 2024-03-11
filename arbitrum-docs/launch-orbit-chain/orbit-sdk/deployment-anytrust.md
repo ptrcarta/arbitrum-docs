@@ -8,34 +8,41 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 2
 ---
 
-This section explains how to to initiate a  <a data-quicklook-from="arbitrum-anytrust-chain">`Anytrust Orbit`</a> chain step by step.
+This section explains how to to initiate an <a data-quicklook-from="arbitrum-anytrust-chain">`Anytrust Orbit`</a> chain step by step.
 
- [the `set-valid-keyset` example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain. 
+  - <small>For those who prefer an immediate hands-on coding experience, we recommend starting with the "set-valid-keyset" <a href="https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts">example</a> located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain.</small>
 
-  - <small>For those who prefer an immediate hands-on coding experience, we recommend starting with <a href="https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts">`set-valid-keyset` example</a> located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain.</small>
+### About Anytrust Orbit
 
-The process of Anytrust chain deployment is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
-
+Anytrust chains represent a different model than Rollup Orbit, offering unique features and deployment processes. For a comprehensive understanding of the general principles of Orbit chains and the difference between Orbit chain types, please refer  [Orbit SDK introduction](introduction.md) page.
 
 ### Anytrust Deployment
 
-Having previously covered the essentials of deploying Arbitrum Orbit chains and specifically focusing on Rollup Orbit chains (on rollup deployment [doc](deployment-rollup.md)), we now turn our attention to setting up an Anytrust Orbit chain. Anytrust chains represent a different model within the Arbitrum Orbit ecosystem, offering unique features and deployment processes. For a comprehensive understanding of the general principles of Orbit chains and the difference between Orbit chain types, please refer the [introduction](introduction.md) page.
+The deployment process of Anytrust chains is very similar to the [Rollup Orbit deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) but with some differences that will be explained below.
 
 #### Setting Up an Anytrust Orbit Chain Using Orbit SDK
 
-The process of setting up an Anytrust Orbit chain involves several steps, similar to the Rollup chain setup but with specific configurations tailored for Anytrust:
+Setting up an Anytrust Orbit chain involves several steps, similar to the [Rollup chain setup](deployment-rollup.md#rollup-config-param) but with specific configurations tailored for Anytrust:
 
-1. **Prepare the Configuration**: Similar to the Rollup chain, you'll need to prepare the chain configuration, focusing on parameters that are specific to Anytrust chains.
+1. **Config Preparation**:
 
-2. **Use Orbit SDK APIs**: The Orbit SDK provides APIs tailored for Anytrust chain deployment. These APIs might differ slightly from those used for Rollup chains, reflecting the unique aspects of Anytrust chains.
+      Similar to the Rollup chain, you'll need to prepare the chain configuration, focusing on parameters that are specific to Anytrust chains.
 
-3. **Deploy the Chain**: Utilize the Orbit SDK to deploy your Anytrust chain. This process will involve sending transactions and setting up the necessary smart contracts on the parent chain.
+2. **Use Orbit SDK APIs**:
+
+      The Orbit SDK provides APIs tailored for Anytrust chain deployment. These APIs might differ slightly from those used for Rollup chains, reflecting the unique aspects of Anytrust chains.
+
+3. **Deploy the Chain**:
+
+      Utilize the Orbit SDK to deploy your Anytrust chain. This process will involve sending transactions and setting up the necessary smart contracts on the parent chain.
    
-4. **Setting Anytrust Keyset**: In the deployment of an Anytrust Orbit chain, a crucial step involves defining and setting up the <a data-quicklook-from="data-availability-committee-dac">`Data Availability Committee (DAC)`</a> keyset. This keyset, comprising keys from the appointed members of the DAC, is essential for ensuring data availability and integrity. Once you have selected your committee members and gathered their keys, these keys are then configured into a keyset using the Orbit SDK. This keyset is subsequently embedded into the chain, serving as a verification mechanism to maintain the trust and security of the Anytrust chain. The proper configuration and deployment of this keyset are vital for the effective operation and reliability of the Anytrust model within the Arbitrum Orbit framework.
+4. **Setting Anytrust Keyset**:
+
+      In the deployment of an Anytrust Orbit chain, a crucial step involves defining and setting up the <a data-quicklook-from="data-availability-committee-dac">`Data Availability Committee (DAC)`</a> keyset. This keyset, comprising keys from the appointed members of the DAC, is essential for ensuring data availability and integrity. Once you have selected your committee members and gathered their keys, these keys are then configured into a keyset using the Orbit SDK. This keyset is subsequently embedded into the chain, serving as a verification mechanism to maintain the trust and security of the Anytrust chain. The proper configuration and deployment of this keyset are vital for the effective operation and reliability of the Anytrust model within the Arbitrum Orbit framework.
 
 We will explain each step on the coming sections:
 
-### Anytrust Deployment Parameters Configuration
+### 1. Anytrust Deployment Parameters Configuration
 
 Deploying an Anytrust Orbit chain involves a series of steps that mirror those required for a Rollup Orbit chain, with certain specificities unique to the Anytrust model. 
 
