@@ -30,10 +30,10 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
     **Note:** currently just `ERC20` tokens with 18 decimals are acceptable as gas tokens on Orbit chains.
 
 2. **Chain Configuration**: When preparing the `chainConfig` using the Orbit SDK, you need to specify the chosen `ERC20` token address as the `nativeToken`. This step is crucial for the system to recognize and use your selected `ERC20` token for transaction fees.
-**Note** that as discussed above the chain config need to be set to Anytrust chain type and `DataAvailabilityCommittee` should be set to `true`.
+**Note** that as discussed above the chain config need to be set to Anytrust chain type and `DataAvailabilityCommittee` should be set to `"true"`.
 
    Example:
-   ```bash
+   ```js
    import { prepareChainConfig } from '@arbitrum/orbit-sdk';
 
    const chainConfig = prepareChainConfig({
@@ -46,7 +46,7 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
 3. **Token Approval before deployment process**: In Custom gas token Orbit chains, the owner needs to give allowance to the rollupCreator contract before starting the deployment process, so that RollupCreator can spend enough tokens for the deployment process. For this purpose we defined two APIs on the Orbit SDK:
    1. **createRollupEnoughCustomFeeTokenAllowance**: This API would get related inputs and checks if the rollupCreator contract has enough Allowance on the token from the owner.
    
-        ```bash
+        ```js
        import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
        
        const allowanceParams = {
@@ -78,7 +78,7 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
 The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the ERC20 token details into these configurations.
 
 **Note** that using API, you need to specify nativeToken as params as well. An example is:
-```bash
+```js
   const txRequest = await createRollupPrepareTransactionRequest({
     params: {
       config,
