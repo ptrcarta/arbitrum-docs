@@ -21,7 +21,7 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
 
 :::
 
-#### Key Differences for Custom Gas Token Orbit Chain Deployment:
+#### Key Differences for Custom Gas Token Orbit Chain Deployment
 
 1. **Fee Token Specification:** 
 
@@ -69,7 +69,7 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
     
     Example:
    
-    ```bash
+    ```js
     import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
 
     const allowanceParams = {
@@ -83,21 +83,24 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
     );
     ```
 
-#### Deployment Process:
+#### Deployment Process
 
-The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the ERC20 token details into these configurations.
+The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to the [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the `ERC20` token details into these configurations.
 
-**Note** that using API, you need to specify nativeToken as params as well. An example is:
+**Note:** When using the API, you need to specify `nativeToken` as params as well.
+
+    Example:
+
 ```js
-  const txRequest = await createRollupPrepareTransactionRequest({
+const txRequest = await createRollupPrepareTransactionRequest({
     params: {
-      config,
-      batchPoster,
-      validators: [validator],
-      nativeToken},
+    config,
+    batchPoster,
+    validators: [validator],
+    nativeToken},
     account: deployer.address,
     publicClient: parentChainPublicClient,
-  });
+});
 ```
 
-All other parts would be the same as what we've discussed on the Rollup Orbit chain deployment [page](deployment-rollup.md).
+All other parts would be the same as explained in the   [Rollup Orbit chain deployment page](deployment-rollup.md).
