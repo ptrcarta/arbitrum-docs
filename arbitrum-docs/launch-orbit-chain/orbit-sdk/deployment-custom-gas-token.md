@@ -43,35 +43,45 @@ As mentioned on [introduction page](introduction.md), only Anytrust chains can h
    });
    ```
 
-3. **Token Approval before deployment process**: In Custom gas token Orbit chains, the owner needs to give allowance to the rollupCreator contract before starting the deployment process, so that RollupCreator can spend enough tokens for the deployment process. For this purpose we defined two APIs on the Orbit SDK:
-   1. **createRollupEnoughCustomFeeTokenAllowance**: This API would get related inputs and checks if the rollupCreator contract has enough Allowance on the token from the owner.
+3. **Token Approval before deployment process**
+
+    In Custom gas token Orbit chains, the owner needs to give allowance to the `rollupCreator` contract before starting the deployment process, so that `RollupCreator` can spend enough tokens for the deployment process. For this purpose we defined two APIs on the Orbit SDK:
+
+   A. `createRollupEnoughCustomFeeTokenAllowance`
    
-        ```js
-       import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
-       
-       const allowanceParams = {
-       nativeToken,
-       account: deployer_address,
-       publicClient: parentChainPublicClient,
-       };
-       
-       const enough Allowance = createRollupEnoughCustomFeeTokenAllowance(allowanceParams)
-        ```
-   2. **createRollupPrepareCustomFeeTokenApprovalTransactionRequest**: This API get related inputs and create the transaction request to get the enough Allowance from the owner to the RollupCreator to spend nativeToken on the deployment process. An example would be:
+    This API would get related inputs and checks if the rollupCreator contract has enough Allowance on the token from the owner.
    
-       ```bash
-       import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
-       
-       const allowanceParams = {
-       nativeToken,
-       account: deployer_address,
-       publicClient: parentChainPublicClient,
-       };
-       
-       const approvalTxRequest = await createRollupPrepareCustomFeeTokenApprovalTransactionRequest(
-         allowanceParams,
-       );
-        ```
+    ```js
+    import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
+
+    const allowanceParams = {
+    nativeToken,
+    account: deployer_address,
+    publicClient: parentChainPublicClient,
+    };
+
+    const enough Allowance = createRollupEnoughCustomFeeTokenAllowance(allowanceParams)
+    ```
+
+   B. `createRollupPrepareCustomFeeTokenApprovalTransactionRequest`
+   
+    This API gets related inputs and creates the transaction request to secure enough Allowance from the owner to the `RollupCreator` to spend `nativeToken` on the deployment process.
+    
+    Example:
+   
+    ```bash
+    import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
+
+    const allowanceParams = {
+    nativeToken,
+    account: deployer_address,
+    publicClient: parentChainPublicClient,
+    };
+
+    const approvalTxRequest = await createRollupPrepareCustomFeeTokenApprovalTransactionRequest(
+        allowanceParams,
+    );
+    ```
 
 #### Deployment Process:
 
