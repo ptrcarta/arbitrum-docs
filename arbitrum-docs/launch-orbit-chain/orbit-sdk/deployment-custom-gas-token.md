@@ -45,11 +45,11 @@ As mentioned in the [introduction page](introduction.md), only Anytrust chains c
 
 3. **Token Approval before deployment process**
 
-    In Custom gas token Orbit chains, the owner needs to give allowance to the `rollupCreator` contract before starting the deployment process, so that `RollupCreator` can spend enough tokens for the deployment process. For this purpose we defined two APIs on the Orbit SDK:
+    In Custom gas token Orbit chains, the owner needs to give allowance to the `rollupCreator` contract before starting the deployment process so that `RollupCreator` can spend enough tokens for the deployment process. For this purpose, we defined two APIs on the Orbit SDK:
 
    A. `createRollupEnoughCustomFeeTokenAllowance`
    
-    This API would get related inputs and checks if the rollupCreator contract has enough Allowance on the token from the owner.
+    This API gets related inputs and checks if the `rollupCreator` contract has enough Allowance on the token from the owner.
    
     ```js
     import {createRollupEnoughCustomFeeTokenAllowance} from '@arbitrum/orbit-sdk';
@@ -87,7 +87,7 @@ As mentioned in the [introduction page](introduction.md), only Anytrust chains c
 
 The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to the [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the `ERC20` token details into these configurations.
 
-**Note:** When using the API, you need to specify `nativeToken` as params as well.
+**Note:** When using the API, you also need to specify `nativeToken` as a param.
 
     Example:
 
