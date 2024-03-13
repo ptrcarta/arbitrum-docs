@@ -40,15 +40,15 @@ To establish and configure the token bridge effectively, the process can be brok
 
 :::info
 
-The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is same for all different types of Orbit chain except step 1 which is just needed for **Custom fee token** Orbit chains, and step 5 is just for ETH-based Orbit chains.
+The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is the same for all different types of Orbit chain except step 1 which is only needed for **Custom fee token** Orbit chains, and step 5, just for ETH-based Orbit chains.
 
 :::
 
 ### 1. Token Approval (just for Custom fee token Orbit chains){#step-1}
-Initiating the deployment of a token bridge for **Custom Fee Token** on orbit chains begins with ensuring the `TokenBridgeCreator` contract is granted sufficient approvals of the native token. To facilitate this process, the Orbit SDK provides two essential APIs:
+Initiating the deployment of a token bridge for **[Custom Fee Token](/launch-orbit-chain/concepts/custom-gas-token-sdk.md)** on orbit chains begins with ensuring the `TokenBridgeCreator` contract is granted sufficient approvals of the native token. To facilitate this process, the Orbit SDK provides two essential APIs:
 
-1. **createTokenBridgeEnoughCustomFeeTokenAllowance**: This API is designed to verify whether the deployer's address possesses an adequate allowance to encompass the costs associated with the bridge token deployment.
-2. **createTokenBridgePrepareCustomFeeTokenApprovalTransactionRequest**: This API assists in generating the raw transaction required to approve the native token for the `TokenBridgeCreator` contract.
+1. **`createTokenBridgeEnoughCustomFeeTokenAllowance`**: This API is designed to verify that the deployer's address has enough allowance to pay for the fees associated with the bridge token deployment.
+2. **`createTokenBridgePrepareCustomFeeTokenApprovalTransactionRequest`**: This API assists in generating the raw transaction required to approve the native token for the `TokenBridgeCreator` contract.
 
 The following example demonstrates how to leverage these APIs effectively to check for and, if necessary, grant approval to the `TokenBridgeCreator` contract:
 
