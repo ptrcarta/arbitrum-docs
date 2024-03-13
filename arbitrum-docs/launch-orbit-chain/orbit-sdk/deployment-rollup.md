@@ -10,8 +10,6 @@ sidebar_position: 1
 
 This section explains how to to initiate a <a data-quicklook-from="arbitrum-rollup-chain">`Rollup Orbit`</a> chain step by step.
 
-For those who prefer diving directly into coding without an extensive tutorial, we recommend exploring [this example code](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts) taken from the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.
-
   - <small>For those who prefer diving directly into coding without an extensive tutorial, we recommend exploring the "create-rollup-eth" <a href="https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-eth/index.ts">example</a> taken from the Orbit SDK repository. It provides a practical demonstration of deploying a Rollup Orbit chain from the ground up.</small>
 
 ### Rollup Orbit chain deployment
@@ -22,7 +20,7 @@ Each Orbit chain requires a set of fundamental contracts to be deployed on its p
 - Rollup contracts
 - Contracts handling <a data-quicklook-from="fraud-proof">fraud proofs</a> 
 
-They are the backbone of the Arbitrum Nitro stack, ensuring its robust and efficient operation. You can explore these contracts in detail in the [nitro-contracts GitHub repository](https://github.com/OffchainLabs/nitro-contracts). 
+These contracts are the backbone of the Arbitrum <a data-quicklook-from="arbitrum-nitro">Nitro stack</a>, ensuring its robust and efficient operation. You can explore these contracts in detail in the [nitro-contracts](https://github.com/OffchainLabs/nitro-contracts) GitHub repository. 
 
 Beyond the deployment stage, the Orbit SDK also takes charge of the necessary initializations and configurations. This means that once the core contracts have been successfully deployed, the SDK facilitates their setup and fine-tuning, ensuring that your Orbit chain is up and running and optimized for performance and functionality.
 
@@ -124,7 +122,7 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
 
 All the parameters explained in this section are customizable, allowing the chain deployer to stick with default settings or specify new values. In the upcoming sections, we will dive deeper into what each parameter represents and how you can utilize the Orbit SDK to configure them effectively for your Orbit chain deployment.
 
-<h3 id="chain-config-parameter">Chain Config Parameter</h3>
+### Chain Config Parameter
 
 
 In this section, we provide detailed explanations of key configurable parameters within the `chainConfig` for Orbit chain deployment and guide you on utilizing the Orbit SDK to generate the desired `chainConfig` JSON string. These parameters play an important role in defining your Orbit chain's characteristics and operational parameters. Here are the parameters you need to know about:
