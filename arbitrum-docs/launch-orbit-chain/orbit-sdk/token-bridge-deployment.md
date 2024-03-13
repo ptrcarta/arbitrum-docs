@@ -26,11 +26,25 @@ The <a data-quicklook-from='arbitrum-nitro'>Arbitrum Nitro stack</a> was designe
 This strategic development enhances the interoperability of the Arbitrum Orbit ecosystem. 
 The token bridge architecture includes contracts located on the  <a data-quicklook-from='parent-chain'>parent chain</a> as well as a complementary set of contracts on the <a data-quicklook-from='child-chain'>child chain</a>. These entities communicate via the <a data-quicklook-from='retryable-ticket'>Retryable Ticket </a> protocol, ensuring efficient and secure interactions. 
 
-For an in-depth exploration of the token bridge mechanism, feel free to consult the following [documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20). This resource provides comprehensive insights into the design and operational dynamics of the bridge.
+For an in-depth exploration of the token bridge mechanism, feel free to consult the [`ERC-20` token bridge overview](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20) where you'll find insights into the design and operational dynamics of the bridge.
 
-Following the deployment and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent chain and the child chain. To establish and configure the token bridge effectively, the process can be broken down into the following steps. **Note** that the token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is same for all different types of Orbit chain except step 1 which is just needed for **Custom fee token** Orbit chains and step 5 is just for ETH-based Orbit chains.
+Following the [deployment](token-bridge-deployment.md) and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent chain and the child chain. 
 
-### 1. Token Approval (just for Custom fee token Orbit chains)
+To establish and configure the token bridge effectively, the process can be broken down into the following steps: 
+
+1. **[Token Approval](#step-1)**
+2. **[ Token bridge contract deployment ](#step-2)**
+3. **[ Transaction recipient and checking for deployment on child chain ](#step-3)**
+4. **[ Deployment information and contract addresses ](#step-4)**
+5. **[ Setting up the WETH gateway ](#step-5)**
+
+:::info
+
+The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is same for all different types of Orbit chain except step 1 which is just needed for **Custom fee token** Orbit chains, and step 5 is just for ETH-based Orbit chains.
+
+:::
+
+### 1. Token Approval (just for Custom fee token Orbit chains){#step-1}
 Initiating the deployment of a token bridge for **Custom Fee Token** on orbit chains begins with ensuring the `TokenBridgeCreator` contract is granted sufficient approvals of the native token. To facilitate this process, the Orbit SDK provides two essential APIs:
 
 1. **createTokenBridgeEnoughCustomFeeTokenAllowance**: This API is designed to verify whether the deployer's address possesses an adequate allowance to encompass the costs associated with the bridge token deployment.
@@ -54,7 +68,7 @@ In this scenario, `allowanceParams` includes the native token details, the rollu
 
 It is important to note that following the generation of the raw transaction, the deployer must sign and broadcast this transaction to the network to finalize the approval process.
 
-### 2. Token bridge contract deployment
+### 2. Token bridge contract deployment{#step-2}
 The deployment of token bridge contracts constitutes the foundational step in establishing a bridge between the parent and child chains. This process mirrors the deployment methodology used for orbit chain contracts, where a primary contract, named `RollupCreator`, facilitated the deployment of core contracts. In the context of token bridge contracts, the `TokenBridgeCreator` contract assumes a similar pivotal role by orchestrating the deployment across both the parent and child chains. The Solidity code for the `TokenBridgeCreator` contract is accessible [here](https://github.com/OffchainLabs/token-bridge-contracts/blob/b3894ecc8b6185b2d505c71c9a7851725f53df15/contracts/tokenbridge/ethereum/L1AtomicTokenBridgeCreator.sol#L4).
 
 This unique contract is capable of deploying the token bridge contracts on both the parent and child chains through a singular transaction. A common query is how it manages to deploy contracts on the child chain from the parent chain directly. The solution lies in utilizing the Retryable Tickets protocol, which facilitates the transmission of the deployment message between the two chains. This message, have been transmitted, and trigger the contract deployment by the Retryable Tickets mechanism. For an in-depth understanding of the Retryable Ticket system, please refer to this [documentation](https://docs.arbitrum.io/arbos/l1-to-l2-messaging#retryable-tickets).
@@ -77,7 +91,7 @@ In the above example, `rollupContractAddress` refers to the Orbit chain's rollup
 
 Following the creation of the raw transaction, the next steps involve signing it and broadcasting it to the relevant blockchain network to complete the deployment process.
 
-### 3. Transaction recipient and checking for deployment on child chain
+### 3. Transaction recipient and checking for deployment on child chain{#step-3}
 Following the dispatch of the deployment transaction, it's crucial to retrieve the transaction receipt and verify the successful deployment of the contracts on both the parent and child chains. Our Orbit SDK includes a dedicated API for this purpose, named `createTokenBridgePrepareTransactionReceipt`, which simplifies the process of obtaining the deployment transaction's recipient. An illustrative use of this API is as follows:
 
 ```bash
@@ -106,7 +120,7 @@ console.log(`Retryable executed successfully`);
 
 In this example, the `waitForRetryables` method is invoked on the **txReceipt** to monitor the execution of Retryable tickets and verify their status. A status of "success" indicates that the Retryable tickets have been executed successfully, ensuring the contracts' deployment. It's important to note that this process involves two Retryable tickets, and a more comprehensive walkthrough is available in [this segment](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1e39d21eef57d204bfa609c4c29284528ddf05ac/examples/create-token-bridge-eth/index.ts#L78-L104) of the example. This enhanced approach not only simplifies the retrieval of transaction receipts but also provides a reliable method for verifying contract deployment across chains.
 
-### 4. Deployment information and contract addresses
+### 4. Deployment information and contract addresses{#step-4}
 After deployment par finished and we are assure that the retryable tickets are successfult it's time to get the deployment information and all token bridge contract addresses.
 To get these information we have an API on Orbit SDK named `getTokenBridgeContracts`. This is a method for the token bridge recipient that you can use to retrieve the informtion.
 An example to get the contract addresses from the `txReceipt` generated on previous steps is as below:
@@ -116,7 +130,7 @@ An example to get the contract addresses from the `txReceipt` generated on previ
   });
 ```
 
-### 5. Setting up the WETH gateway (just for ETH-based Orbit chains)
+### 5. Setting up the WETH gateway (just for ETH-based Orbit chains){#step-5}
 The last step to setup the token bridge for an ETH-based Orbit chain is to set up the WETH Gateway. **Note** that step is just for ETH-based Orbit chains and not for Custom fee token orbit chains. In our canonical bridge design, we have a separate custom gateway for WETH to bridge it in and out of the Orbit chain. You can find more info about WETH gateway on our [docs](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20#other-flavors-of-gateways).
 
 So after deployment of the token bridge and when you are assure about the success on the deployment on the both parent and child chain, it's time to set the WETH Gateway on both parent and child chain. To handle that we have two APIs on our Orbit SDK:
