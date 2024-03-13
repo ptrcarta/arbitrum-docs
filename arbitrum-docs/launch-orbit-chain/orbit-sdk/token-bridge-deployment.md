@@ -8,25 +8,14 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 5
 ---
 
-This guide outlines the process of deploying `token bridge contracts` for your Orbit chain using the Orbit SDK. 
-
-As highlighted in the [introduction page](introduction.md), deploying a token bridge is a crucial step after initializing your Orbit chain, enabling the bridging of `ERC-20` tokens to and from your Orbit chain.
-
-For a practical approach, we recommend the following examples from the Orbit SDK repository:
-
-- For Orbit chains using ETH as the native token, explore [this ETH token bridge deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-token-bridge-eth/index.ts).
-- For Custom fee token Orbit chains, refer to [this custom fee token bridge deployment example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-token-bridge-custom-fee-token/index.ts).
-
-These resources are designed for users who prefer a hands-on learning experience. Ensure you're familiar with the prerequisites mentioned in the introduction before proceeding.
-
-### Token Bridge Deployment Steps
-
 The <a data-quicklook-from='arbitrum-nitro'>Arbitrum Nitro stack</a> was designed without native support for specific token bridging standards at the protocol level, but Offchain Labs crafted a "canonical bridge" that ensures seamless token transfers between the parent and child chain. 
 
-This strategic development enhances the interoperability of the Arbitrum Orbit ecosystem. 
+This development enhances the interoperability of the Arbitrum Orbit ecosystem. 
 The token bridge architecture includes contracts located on the  <a data-quicklook-from='parent-chain'>parent chain</a> as well as a complementary set of contracts on the <a data-quicklook-from='child-chain'>child chain</a>. These entities communicate via the <a data-quicklook-from='retryable-ticket'>Retryable Ticket </a> protocol, ensuring efficient and secure interactions. 
 
 For an in-depth exploration of the token bridge mechanism, feel free to consult the [`ERC-20` token bridge overview](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20) where you'll find insights into the design and operational dynamics of the bridge.
+
+### Token Bridge Deployment Steps
 
 Following the [deployment](token-bridge-deployment.md) and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent chain and the child chain. 
 
@@ -40,7 +29,7 @@ To establish and configure the token bridge effectively, the process can be brok
 
 :::info
 
-The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is the same for all different types of Orbit chain except step 1 which is only needed for **Custom fee token** Orbit chains, and step 5, just for ETH-based Orbit chains.
+The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is the same for all different types of Orbit chain except [step 1](#step-1) which is only needed for **Custom fee token** Orbit chains, and [step 5](#step-5), just for ETH-based Orbit chains.
 
 :::
 
@@ -69,6 +58,7 @@ In this scenario, `allowanceParams` includes the native token details, the rollu
 It is important to note that following the generation of the raw transaction, the deployer must sign and broadcast this transaction to the network to finalize the approval process.
 
 ### 2. Token bridge contract deployment{#step-2}
+
 The deployment of token bridge contracts constitutes the foundational step in establishing a bridge between the parent and child chains. This process mirrors the deployment methodology used for orbit chain contracts, where a primary contract, named `RollupCreator`, facilitated the deployment of core contracts. In the context of token bridge contracts, the `TokenBridgeCreator` contract assumes a similar pivotal role by orchestrating the deployment across both the parent and child chains. The Solidity code for the `TokenBridgeCreator` contract is accessible [here](https://github.com/OffchainLabs/token-bridge-contracts/blob/b3894ecc8b6185b2d505c71c9a7851725f53df15/contracts/tokenbridge/ethereum/L1AtomicTokenBridgeCreator.sol#L4).
 
 This unique contract is capable of deploying the token bridge contracts on both the parent and child chains through a singular transaction. A common query is how it manages to deploy contracts on the child chain from the parent chain directly. The solution lies in utilizing the Retryable Tickets protocol, which facilitates the transmission of the deployment message between the two chains. This message, have been transmitted, and trigger the contract deployment by the Retryable Tickets mechanism. For an in-depth understanding of the Retryable Ticket system, please refer to this [documentation](https://docs.arbitrum.io/arbos/l1-to-l2-messaging#retryable-tickets).
@@ -92,6 +82,7 @@ In the above example, `rollupContractAddress` refers to the Orbit chain's rollup
 Following the creation of the raw transaction, the next steps involve signing it and broadcasting it to the relevant blockchain network to complete the deployment process.
 
 ### 3. Transaction recipient and checking for deployment on child chain{#step-3}
+
 Following the dispatch of the deployment transaction, it's crucial to retrieve the transaction receipt and verify the successful deployment of the contracts on both the parent and child chains. Our Orbit SDK includes a dedicated API for this purpose, named `createTokenBridgePrepareTransactionReceipt`, which simplifies the process of obtaining the deployment transaction's recipient. An illustrative use of this API is as follows:
 
 ```js
