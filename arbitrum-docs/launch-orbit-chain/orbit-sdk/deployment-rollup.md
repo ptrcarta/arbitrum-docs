@@ -38,7 +38,7 @@ In the following sections, we will go into the specifics of the inputs and confi
 
 The `createRollup` function in the [RollupCreator contract](https://github.com/OffchainLabs/nitro-contracts/blob/acb0ef919cce9f41da531f8dab1b0b31d9860dcb/src/rollup/RollupCreator.sol#L107) is a crucial component for deploying Orbit chains. It takes a complex input named `deployParams`, structured to encapsulate various configurable parameters customizing the Orbit chain. Let's break down the structure of these parameters:
 
-1. **`RollupDeploymentParams` struct:**
+#### 1. `RollupDeploymentParams` struct
 
    ```solidity
    struct RollupDeploymentParams {
@@ -51,9 +51,9 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
        uint256 maxFeePerGasForRetryables;
    }
    ```
-   This solidity struct includes key settings like the chain configuration (`Config`), validator addresses, maximum data size, the native token of the chain, and more.
+This solidity struct includes key settings like the chain configuration (`Config`), validator addresses, maximum data size, the native token of the chain, and more.
 
-2. **`Config` Struct:**
+#### 2. `Config` Struct
 
    ```solidity
    struct Config {
@@ -70,9 +70,11 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
        ISequencerInbox.MaxTimeVariation sequencerInboxMaxTimeVariation;
    }
    ```
-   The `Config` struct defines the chain's core settings, including block confirmation periods, stake parameters, and the chain ID.
 
-3. **MaxTimeVariation Structure:**
+The `Config` struct defines the chain's core settings, including block confirmation periods, stake parameters, and the chain ID.
+
+#### 3. `MaxTimeVariation` Struct
+
    ```solidity
    struct MaxTimeVariation {
        uint256 delayBlocks;
@@ -81,10 +83,12 @@ The `createRollup` function in the [RollupCreator contract](https://github.com/O
        uint256 futureSeconds;
    }
    ```
-   This nested structure within `Config` specifies time variations related to block sequencing, providing control over block delay and future block settings.
-4. **chainConfig:**
+This nested structure within `Config` specifies time variations related to block sequencing, providing control over block delay and future block settings.
 
-    The `chainConfig` parameter within the `Config` structure, is a critical component for customizing the Orbit chain. It's a stringified JSON object containing various configuration options that dictate how the Orbit chain behaves and interacts with the parent chain network. Here's a brief overview of the JSON structure:
+#### 4. `chainConfig`{#chainConfig}
+
+The `chainConfig` parameter within the `Config` structure, is a critical component for customizing the Orbit chain. It's a stringified JSON object containing various configuration options that dictate how the Orbit chain behaves and interacts with the parent chain network. Here's a brief overview of the JSON structure:
+
    ```solidity
    {
      chainId: number;
