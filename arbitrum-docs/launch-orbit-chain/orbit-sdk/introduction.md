@@ -45,7 +45,7 @@ A primary function of the Orbit SDK is the deployment of a new Orbit chain. The 
    
 ###### Learn more about [ Anytrust consensus mechanism ]( /inside-arbitrum-nitro/#inside-anytrust )
 
-###### Jump right into the [ Anytrust Orbit chain deployment guide ]( deployment-anytrust )
+###### Jump right into the [ Anytrust Orbit chain deployment guide ](deployment-anytrust.md)
 
 3. **Custom Gas Token Orbit Chains**: This type allows transaction fees to be paid with a specific `ERC-20` token instead of `ETH`. Although the setup process is similar to a standard Rollup Orbit chain, there are important distinctions to consider. Feel free to consult the [Custom Gas Token Orbit chain deployment guide](deployment-custom-gas-token.md). 
 
