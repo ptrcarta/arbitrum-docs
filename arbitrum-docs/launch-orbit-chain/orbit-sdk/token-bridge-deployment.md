@@ -8,7 +8,9 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 5
 ---
 
-This guide outlines the process to deploy `token bridge contracts` for your Orbit chain using the Orbit SDK. As highlighted in the [introduction page](introduction.md), deploying a token bridge is a crucial step after initializing your Orbit chain, enabling the bridging of ERC-20 tokens to and from your Orbit chain.
+This guide outlines the process of deploying `token bridge contracts` for your Orbit chain using the Orbit SDK. 
+
+As highlighted in the [introduction page](introduction.md), deploying a token bridge is a crucial step after initializing your Orbit chain, enabling the bridging of `ERC-20` tokens to and from your Orbit chain.
 
 For a practical approach, we recommend the following examples from the Orbit SDK repository:
 
@@ -19,8 +21,12 @@ These resources are designed for users who prefer a hands-on learning experience
 
 ### Token Bridge Deployment Steps
 
-The Arbitrum Nitro stack, designed without native support for specific token bridging standards at the protocol level but Offchain Labs crafted a "canonical bridge," a sophisticated mechanism designed to ensure seamless token transfers between the parent and child chain. This strategic development enhances the interoperability of the Arbitrum Orbit ecosystem. 
-The token bridge architecture is meticulously engineered, comprising contracts situated on the parent chain as well as a complementary set of contracts on the child chain. These entities communicate via the Retryable Ticket protocol, ensuring efficient and secure interactions. For an in-depth exploration of the token bridge mechanism, interested parties are encouraged to consult the following [documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20). This resource provides comprehensive insights into the design and operational dynamics of the bridge.
+The <a data-quicklook-from='arbitrum-nitro'>Arbitrum Nitro stack</a> was designed without native support for specific token bridging standards at the protocol level, but Offchain Labs crafted a "canonical bridge" that ensures seamless token transfers between the parent and child chain. 
+
+This strategic development enhances the interoperability of the Arbitrum Orbit ecosystem. 
+The token bridge architecture includes contracts located on the  <a data-quicklook-from='parent-chain'>parent chain</a> as well as a complementary set of contracts on the <a data-quicklook-from='child-chain'>child chain</a>. These entities communicate via the <a data-quicklook-from='retryable-ticket'>Retryable Ticket </a> protocol, ensuring efficient and secure interactions. 
+
+For an in-depth exploration of the token bridge mechanism, feel free to consult the following [documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20). This resource provides comprehensive insights into the design and operational dynamics of the bridge.
 
 Following the deployment and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent chain and the child chain. To establish and configure the token bridge effectively, the process can be broken down into the following steps. **Note** that the token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is same for all different types of Orbit chain except step 1 which is just needed for **Custom fee token** Orbit chains and step 5 is just for ETH-based Orbit chains.
 
