@@ -13,11 +13,11 @@ The <a data-quicklook-from='arbitrum-nitro'>Arbitrum Nitro stack</a> was designe
 This development enhances the interoperability of the Arbitrum Orbit ecosystem. 
 The token bridge architecture includes contracts located on the  <a data-quicklook-from='parent-chain'>parent chain</a> as well as a complementary set of contracts on the <a data-quicklook-from='child-chain'>child chain</a>. These entities communicate via the <a data-quicklook-from='retryable-ticket'>Retryable Ticket </a> protocol, ensuring efficient and secure interactions. 
 
-For an in-depth exploration of the token bridge mechanism, feel free to consult the [`ERC-20` token bridge overview](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20) where you'll find insights into the design and operational dynamics of the bridge.
+For an in-depth exploration of the token bridge mechanism, feel free to consult the [`ERC-20` token bridge overview](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20), which provides insights into the bridge's design and operational dynamics.
 
 ### Token Bridge Deployment Steps
 
-Following the [deployment](token-bridge-deployment.md) and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent chain and the child chain. 
+Following the [deployment](token-bridge-deployment.md) and initialization of the Orbit chain, the subsequent phase involves deploying contracts on both the parent and child chains. 
 
 To establish and configure the token bridge effectively, the process can be broken down into the following steps: 
 
@@ -29,7 +29,7 @@ To establish and configure the token bridge effectively, the process can be brok
 
 :::info
 
-The token bridge deployment process depends on the type of Orbit chain. In the following steps the main flow is the same for all different types of Orbit chain except [step 1](#step-1) which is only needed for **Custom fee token** Orbit chains, and [step 5](#step-5), just for ETH-based Orbit chains.
+The token bridge deployment process depends on the type of Orbit chain. In the following steps, the main flow is the same for all different kinds of Orbit chains except [step 1](#step-1), which is only needed for **Custom fee token** Orbit chains, and [step 5](#step-5), just for ETH-based Orbit chains.
 
 :::
 
@@ -53,15 +53,15 @@ if (!(await createTokenBridgeEnoughCustomFeeTokenAllowance(allowanceParams))) {
 }
 ```
 
-In this scenario, `allowanceParams` includes the native token details, the rollup owner's address, and the public client for the parent chain. Initially, the `createTokenBridgeEnoughCustomFeeTokenAllowance` API checks if the deployer's allowance is sufficient. If the allowance is found to be inadequate, the `createTokenBridgePrepareCustomFeeTokenApprovalTransactionRequest` API is called to create the necessary approval transaction.
+In this scenario, `allowanceParams` includes the native token details, the roll-up owner's address, and the public client for the parent chain. Initially, the `createTokenBridgeEnoughCustomFeeTokenAllowance` API checks if the deployer's allowance is sufficient. If the allowance is inadequate, the `createTokenBridgePrepareCustomFeeTokenApprovalTransactionRequest` API is called to create the necessary approval transaction.
 
-It is important to note that following the generation of the raw transaction, the deployer must sign and broadcast this transaction to the network to finalize the approval process.
+It is important to note that after generating the raw transaction, the deployer must sign and broadcast it to the network to finalize the approval process.
 
 ### 2. Token bridge contract deployment{#step-2}
 
 The deployment of token bridge contracts constitutes the foundational step in establishing a bridge between the parent and child chains. This process mirrors the deployment methodology used for orbit chain contracts, where a primary contract, named `RollupCreator`, facilitates the deployment of core contracts. In the context of token bridge contracts, the `TokenBridgeCreator` contract assumes a similar pivotal role by orchestrating the deployment across both the parent and child chains. Feel free to take a look at the [`TokenBridgeCreator` Solidity code](https://github.com/OffchainLabs/token-bridge-contracts/blob/b3894ecc8b6185b2d505c71c9a7851725f53df15/contracts/tokenbridge/ethereum/L1AtomicTokenBridgeCreator.sol#L4).
 
-`TokenBridgeCreator` is capable of deploying the token bridge contracts on both the parent and child chains in a single transaction. A common query is how it manages to deploy contracts on the child chain from the parent chain directly. The solution lies in using the Retryable Tickets protocol, which facilitates the transmission of the deployment message between the two chains. This message, once transmitted, triggers the contract deployment by the Retryable Tickets mechanism. For an in-depth understanding, please refer to this [explanation of the Retryable Ticket system](https://docs.arbitrum.io/arbos/l1-to-l2-messaging#retryable-tickets).
+`TokenBridgeCreator` can deploy the token bridge contracts on both the parent and child chains in a single transaction. A common query is how it manages to directly deploy contracts on the child chain from the parent chain. The solution lies in using the Retryable Tickets protocol, which facilitates the transmission of the deployment message between the two chains. This message, once transmitted, triggers the contract deployment by the Retryable Tickets mechanism. For an in-depth understanding, please refer to this [explanation of the Retryable Ticket system](https://docs.arbitrum.io/arbos/l1-to-l2-messaging#retryable-tickets).
 
 To streamline the deployment process, an API has been integrated into our Orbit SDK, designed to automate the deployment by interacting with the `TokenBridgeCreator` contract. The API is `createTokenBridgePrepareTransactionRequest`, which processes the necessary inputs and generates a transaction request tailored for token bridge deployment. Below is an illustrative example of how to use this API:
 
@@ -83,7 +83,7 @@ Following the creation of the raw transaction, the next steps involve signing it
 
 ### 3. Transaction recipient and checking for deployment on child chain{#step-3}
 
-Following the dispatch of the deployment transaction, it's crucial to retrieve the transaction receipt and verify the successful deployment of the contracts on both the parent and child chains. Our Orbit SDK includes a dedicated API for this purpose, named `createTokenBridgePrepareTransactionReceipt`, which simplifies the process of obtaining the deployment transaction's recipient. An illustrative use of this API is as follows:
+Following the dispatch of the deployment transaction, retrieving the transaction receipt and verifying the successful deployment of the contracts on both the parent and child chains is crucial. Our Orbit SDK includes a dedicated API for this purpose, named `createTokenBridgePrepareTransactionReceipt`, which simplifies the process of obtaining the deployment transaction's recipient. An illustrative use of this API is as follows:
 
 ```js
 const txReceipt = createTokenBridgePrepareTransactionReceipt(
@@ -91,7 +91,7 @@ const txReceipt = createTokenBridgePrepareTransactionReceipt(
 );
 ```
 
-In this scenario, `txHash` represents the hash of the deployment transaction initiated in the previous step. The `waitForTransactionReceipt` API from Viem is used to capture the transaction's recipient on the parent chain. The `createTokenBridgePrepareTransactionReceipt` API enhances the basic functionality provided by Viem's `waitForTransactionReceipt`, introducing a specialized method named `waitForRetryables` to handle the outcome (in this case, `txReceipt`).
+In this scenario, `txHash` represents the hash of the deployment transaction initiated in the previous step. The `waitForTransactionReceipt` API from Viem captures the transaction's recipient on the parent chain. The `createTokenBridgePrepareTransactionReceipt` API enhances the basic functionality provided by Viem's `waitForTransactionReceipt`, introducing a specialized method named `waitForRetryables` to handle the outcome (in this case, `txReceipt`).
 
 By employing the `waitForRetryables` method, one can ascertain the success of Retryable Tickets on the parent chain. Here is how to use this API effectively:
 
@@ -109,12 +109,12 @@ if (orbitChainRetryableReceipts[0].status !== 'success') {
 console.log(`Retryable executed successfully`);
 ```
 
-In this example, the `waitForRetryables` method is invoked on the `txReceipt` to monitor the execution of Retryable Tickets and verify their status. A status of "success" indicates that the Retryable Tickets have been executed successfully, ensuring the contracts' deployment. It's important to note that this process involves two Retryable Tickets, you can check out a [more comprehensive walkthrough](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1e39d21eef57d204bfa609c4c29284528ddf05ac/examples/create-token-bridge-eth/index.ts#L78-L104) of the example. This enhanced approach not only simplifies the retrieval of transaction receipts but also provides a reliable method for verifying contract deployment across chains.
+In this example, the `waitForRetryables` method is invoked on the `txReceipt` to monitor the execution of Retryable Tickets and verify their status. A `success` status indicates that the Retryable Tickets have been executed successfully, ensuring the contracts' deployment. It's important to note that this process involves two Retryable Tickets. You can check out a [more comprehensive walkthrough](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1e39d21eef57d204bfa609c4c29284528ddf05ac/examples/create-token-bridge-eth/index.ts#L78-L104) of the example. This enhanced approach not only simplifies the retrieval of transaction receipts but also provides a reliable method for verifying contract deployment across chains.
 
 ### 4. Deployment information and contract addresses{#step-4}
 
-Once done with the deployment part and we are assured that the Retryable Tickets are successfult it's time to get the deployment information and all token bridge contract addresses.
-To get this information, we have an API on Orbit SDK named `getTokenBridgeContracts`. This is a method for the token bridge recipient that you can use to retrieve the data.
+Once we are done with the deployment and are assured that the Retryable Tickets are successful, it's time to get the deployment information and all token bridge contract addresses.
+To get this information, we have an API on Orbit SDK named `getTokenBridgeContracts`. You can use this method to retrieve the data for the token bridge recipient.
 
 Here's an example of how to get the contract addresses from the `txReceipt` generated in the previous steps:
 
