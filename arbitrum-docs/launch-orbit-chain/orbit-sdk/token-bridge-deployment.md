@@ -129,14 +129,18 @@ The last step to spin up the token bridge for an ETH-based Orbit chain consists 
 
 :::note
 
-That step applies to ETH-based Orbit chains only, and not to Custom fee token orbit chains. In our canonical bridge design, we have a separate custom gateway for WETH to bridge it in and out of the Orbit chain. You can find more info about WETH gateway in our ["other gateways flavors" documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20#other-flavors-of-gateways).
+That step only applies to ETH-based Orbit chains, not to Custom fee token orbit chains. In our canonical bridge design, we have a separate custom gateway for WETH to bridge it in and out of the Orbit chain. 
+
+You can find more info about WETH gateways in our ["other gateways flavors" documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20#other-flavors-of-gateways).
 
 :::
 
-So after deployment of the token bridge and when you are assure about the success on the deployment on the both parent and child chain, it's time to set the WETH Gateway on both parent and child chain. To handle that we have two APIs on our Orbit SDK:
+So after deployment of the token bridge and once you secured a successful deployment on both parent and child chains, it's time to set the `WETH Gateway` on both parent and child chain. To handle that, we have two APIs on our Orbit SDK:
 
-**1. createTokenBridgePrepareSetWethGatewayTransactionRequest:**
-This API helps you to create the raw transaction which handles the set up of WETH gateway on both parent and child chain. An example to use this API is below:
+#### 1. `createTokenBridgePrepareSetWethGatewayTransactionRequest`:
+This API helps you create the raw transaction which handles the WETH gateway set up on both parent and child chains. 
+
+Here's an example on how to use this API:
 
 ```js
   const setWethGatewayTxRequest = await createTokenBridgePrepareSetWethGatewayTransactionRequest({
@@ -154,7 +158,9 @@ This API helps you to create the raw transaction which handles the set up of WET
 
 In this example **rollupContractAddress** is the address of Orbit chain's rollup contract, **rollupOwnerAddress** is the address of rollup owner, **parentChainPublicClient** and **orbitChainPublicClient** are the parent and orbit chain public clients. Also this API has optional fields to override the Retryable ticket setups. In this example **percentIncrease** is the buffer to increase the gas limit for the retryable ticket to be sure about the success of the ticket.
 After creating the raw transaction you need to use Viem to sign and broadcast the transaction to the network.
-**2. createTokenBridgePrepareSetWethGatewayTransactionReceipt**
+
+#### 2. `createTokenBridgePrepareSetWethGatewayTransactionReceipt`
+
 After sending the transaction, you need get the recept of the transaction to be able to check about the success of the Retryable Tickets created on step 1, which is going to set WETH gateway on the Orbit chain. To do that we are using `createTokenBridgePrepareSetWethGatewayTransactionReceipt` API and also `waitForRetryables` method of it to check for the retryable ticket status. For the example in this doc we can use this API as follow:
 
 ```js
