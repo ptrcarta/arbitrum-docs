@@ -1,5 +1,5 @@
 ---
-title: 'Arbitrum Orbit SDK'
+title: 'Token bridge deployment'
 sidebar_label: 'Token bridge deployment'
 description: 'Arbitrum SDK '
 author: Mehdi Salehi
