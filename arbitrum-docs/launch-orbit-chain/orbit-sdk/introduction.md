@@ -10,15 +10,15 @@ sidebar_position: 0
 
 # Welcome to the Arbitrum Orbit SDK
 
-Arbitrum Orbit SDK is a comprehensive toolkit designed for developers interested in building on Arbitrum Orbit platform. This SDK facilitates the creation and management of your own Orbit chain using the advanced capabilities of Viem, a modern alternative to traditional Ethereum libraries like ethers.js and web3.js.
+Arbitrum Orbit SDK is a comprehensive toolkit designed for developers interested in building on Arbitrum Orbit platform. This SDK facilitates the creation and management of your own Orbit chain using the advanced capabilities of Viem, a modern alternative to traditional Ethereum libraries like _ethers.js_ and _web3.js_.
 
 ## Arbitrum Orbit chains
 
-With the Arbitrum Orbit SDK, you have the flexibility to spin up your <a data-quicklook-from="arbitrum-orbit">Orbit</a> chain as a <a data-quicklook-from="layer-3-l3">Layer 3 (L3)</a> chain settling transactions with any Layer 2 (L2) chains, or as a <a data-quicklook-from="layer-2-l2">Layer 2 (L2)</a> chain directly settling on <a data-quicklook-from="layer-1-l1">Layer 1 (L1)</a> chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
+With the Arbitrum Orbit SDK, you have the flexibility to spin up your <a data-quicklook-from="arbitrum-orbit">Orbit</a> chain as a <a data-quicklook-from="layer-3-l3">Layer 3 (L3)</a> chain settling transactions with any <a data-quicklook-from="layer-2-l2">Layer 2 (L2)</a> chains, or as a Layer 2 (L2) chain directly settling on <a data-quicklook-from="layer-1-l1">Layer 1 (L1)</a> chains. This adaptability opens up a realm of possibilities for application development and blockchain use cases.
 
 ### Enhanced Development Experience
 
-The SDK is developed using TypeScript, providing a solid foundation for your development efforts. At the core of our SDK is Viem, which elevates the development experience by offering a streamlined, efficient, and modular approach to interacting with Ethereum's blockchain and smart contracts. Whether you're a seasoned developer familiar with ethers.js or new to blockchain development, Viem and the Arbitrum Orbit SDK offer a smooth transition and easy comparison to understand the benefits and similarities between the platforms, especially with resources like [Viem's ethers.js migration guide](https://viem.sh/docs/ethers-migration.html).
+The SDK is developed using _TypeScript_, providing a solid foundation for your development efforts. At the core of our SDK is _Viem_, which elevates the development experience by offering a streamlined, efficient, and modular approach to interacting with Ethereum's blockchain and smart contracts. Whether you're a seasoned developer familiar with _ethers.js_ or new to blockchain development, _Viem_ and the Arbitrum Orbit SDK offer a smooth transition and easy comparison to understand the benefits and similarities between the platforms, especially with resources like [Viem's ethers.js migration guide](https://viem.sh/docs/ethers-migration.html).
 
 ### Capabilities of the SDK:
 
@@ -43,8 +43,9 @@ A primary function of the Orbit SDK is the deployment of a new Orbit chain. The 
 
    - **Fee Cost**: Anytrust chains are significantly cheaper than Rollup chains because there's no need to send data to the parent chain, facilitating cheaper transaction fees.
    
-      - <small>Learn more about <a href="/inside-arbitrum-nitro/#inside-anytrust">Anytrust consensus mechanism</a></small>
-      - <small>Jump right into <a href="deployment-anytrust">Anytrust Orbit chain deployment guide</a></small>
+###### Learn more about [ Anytrust consensus mechanism ]( /inside-arbitrum-nitro/#inside-anytrust )
+
+###### Jump right into the [ Anytrust Orbit chain deployment guide ]( deployment-anytrust )
 
 3. **Custom Gas Token Orbit Chains**: This type allows transaction fees to be paid with a specific `ERC-20` token instead of `ETH`. Although the setup process is similar to a standard Rollup Orbit chain, there are important distinctions to consider. Feel free to consult the [Custom Gas Token Orbit chain deployment guide](deployment-custom-gas-token.md). 
 
@@ -65,7 +66,7 @@ Once the chain has been deployed, it needs to be initialized. This step requires
 To enable `ERC-20` tokens in and out of your orbit chain, you will need to deploy a bridge instance, which consists of a set of contracts.
 To do this, follow the steps outlined in the [token bridge contract deployment guide](token-bridge-deployment.md).
 
-You can also learn more about our bridge design in the [`ERC-20` token bridge orverview](../../for-devs/concepts/token-bridge/token-bridge-erc20.mdx) 
+You can also learn more about our bridge design in the [`ERC-20` token bridge orverview](/for-devs/concepts/token-bridge/token-bridge-erc20.mdx) 
 
 ### 4. Orbit Chain Configuration
 
