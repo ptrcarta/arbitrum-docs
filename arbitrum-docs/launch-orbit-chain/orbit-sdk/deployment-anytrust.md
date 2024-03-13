@@ -8,9 +8,9 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 2
 ---
 
-This section explains how to to initiate an <a data-quicklook-from="arbitrum-anytrust-chain">Anytrust Orbit chain</a> using [Arbitrum's Orbit SDK](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts").
+This section explains how to to initiate an <a data-quicklook-from="arbitrum-anytrust-chain">Anytrust Orbit chain</a> using [Arbitrum's Orbit SDK](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts).
 
-  - <small>For those who prefer an immediate hands-on coding experience, we recommend starting with the "set-valid-keyset" <a href="https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts">example</a> located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain.</small>
+###### For those who prefer an immediate hands-on coding experience, we recommend starting with the "set-valid-keyset" [example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/set-valid-keyset/index.ts) located in the Orbit SDK repository. This example code will walk you through the process of setting a keyset for your anytrust orbit chain.
 
 ### About Anytrust Orbit
 
