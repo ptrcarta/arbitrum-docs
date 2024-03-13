@@ -109,12 +109,14 @@ if (orbitChainRetryableReceipts[0].status !== 'success') {
 console.log(`Retryable executed successfully`);
 ```
 
-In this example, the `waitForRetryables` method is invoked on the `txReceipt` to monitor the execution of Retryable Tickets and verify their status. A status of "success" indicates that the Retryable Tickets have been executed successfully, ensuring the contracts' deployment. It's important to note that this process involves two Retryable Tickets, and a more comprehensive walkthrough is available in [this segment](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1e39d21eef57d204bfa609c4c29284528ddf05ac/examples/create-token-bridge-eth/index.ts#L78-L104) of the example. This enhanced approach not only simplifies the retrieval of transaction receipts but also provides a reliable method for verifying contract deployment across chains.
+In this example, the `waitForRetryables` method is invoked on the `txReceipt` to monitor the execution of Retryable Tickets and verify their status. A status of "success" indicates that the Retryable Tickets have been executed successfully, ensuring the contracts' deployment. It's important to note that this process involves two Retryable Tickets, you can check out a [more comprehensive walkthrough](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/1e39d21eef57d204bfa609c4c29284528ddf05ac/examples/create-token-bridge-eth/index.ts#L78-L104) of the example. This enhanced approach not only simplifies the retrieval of transaction receipts but also provides a reliable method for verifying contract deployment across chains.
 
 ### 4. Deployment information and contract addresses{#step-4}
-After deployment par finished and we are assure that the Retryable Tickets are successfult it's time to get the deployment information and all token bridge contract addresses.
-To get these information we have an API on Orbit SDK named `getTokenBridgeContracts`. This is a method for the token bridge recipient that you can use to retrieve the informtion.
-An example to get the contract addresses from the `txReceipt` generated on previous steps is as below:
+
+Once done with the deployment part and we are assured that the Retryable Tickets are successfult it's time to get the deployment information and all token bridge contract addresses.
+To get this information, we have an API on Orbit SDK named `getTokenBridgeContracts`. This is a method for the token bridge recipient that you can use to retrieve the data.
+
+Here's an example of how to get the contract addresses from the `txReceipt` generated in the previous steps:
 
 ```js
   const tokenBridgeContracts = await txReceipt.getTokenBridgeContracts({
@@ -122,8 +124,14 @@ An example to get the contract addresses from the `txReceipt` generated on previ
   });
 ```
 
-### 5. Setting up the WETH gateway (just for ETH-based Orbit chains){#step-5}
-The last step to setup the token bridge for an ETH-based Orbit chain is to set up the WETH Gateway. **Note** that step is just for ETH-based Orbit chains and not for Custom fee token orbit chains. In our canonical bridge design, we have a separate custom gateway for WETH to bridge it in and out of the Orbit chain. You can find more info about WETH gateway on our [docs](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20#other-flavors-of-gateways).
+### 5. Setting up the WETH gateway (ETH-based Orbit chains only){#step-5}
+The last step to spin up the token bridge for an ETH-based Orbit chain consists of setting up the `WETH Gateway`. 
+
+:::note
+
+That step applies to ETH-based Orbit chains only, and not to Custom fee token orbit chains. In our canonical bridge design, we have a separate custom gateway for WETH to bridge it in and out of the Orbit chain. You can find more info about WETH gateway in our ["other gateways flavors" documentation](https://docs.arbitrum.io/for-devs/concepts/token-bridge/token-bridge-erc20#other-flavors-of-gateways).
+
+:::
 
 So after deployment of the token bridge and when you are assure about the success on the deployment on the both parent and child chain, it's time to set the WETH Gateway on both parent and child chain. To handle that we have two APIs on our Orbit SDK:
 
