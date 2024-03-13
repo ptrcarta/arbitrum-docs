@@ -7,11 +7,11 @@ sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 4
 ---
-This is a guide on using a Node Config JSON file for configuring an Arbitrum Node, encompassing essential settings for optimal operation, including batch-poster, validator, and overall chain configurations. It offers a roadmap for initiating and managing an Orbit chain, highlighting the critical steps and parameters involved in the configuration process.
+This guide explains how to use a Node Config JSON file to configure an Arbitrum Node, including essential settings for optimal operation, such as batch poster, validator, and overall chain configurations. It offers a roadmap for initiating and managing an Orbit chain, highlighting the critical steps and parameters involved in the configuration process.
 
 ### Node Configuration
 
-Once you have successfully deployed and initialized the Orbit core contracts, the next step is configuring and running your Orbit chain using a Node Config JSON file. This file is a comprehensive JSON object containing all the necessary configurations for the Arbitrum Node, which includes settings for the Batch-poster, Validator, and the chain itself.
+Once you have successfully deployed and initialized the Orbit core contracts, the next step is configuring and running your Orbit chain using a Node Config JSON file. This file is a comprehensive JSON object containing all the configurations for the Arbitrum Node, including settings for the Batch-poster, Validator, and the chain itself.
 
 
 Here’s a sample configuration for a Rollup Orbit Chain:
@@ -75,7 +75,7 @@ Example addition for Anytrust Node Config:
 };
 ```
 
-#### Configuring Your Node Config:
+#### Preparing Your Node Config file:
 
 The Node Config file includes three types of fields:
 
@@ -83,11 +83,11 @@ The Node Config file includes three types of fields:
 2. **Parameters Configurable by the Chain Deployer**: These parameters, like `max-block-speed`, can be adjusted to alter the behavior of your chain.
 3. **Fields Not Typically Configured**: Like the HTTP section, which usually remains standard.
 
-In upcoming sections, we'll explain how to configure these parameters and create a Node Config for your Orbit chain. This configuration is essential for initializing your chain and ensuring it runs according to your specifications. Proper configuration leads to an optimized, stable, and secure Orbit chain, tailored to your project's requirements.
+In upcoming sections, we'll explain how to configure these parameters and create a Node Config for your Orbit chain. This configuration is essential for initializing your chain and ensuring it runs according to your specifications. Proper configuration leads to an optimized, stable, and secure Orbit chain tailored to your project's requirements.
 
 #### Node Config Generation with Orbit SDK
 
-Generating a Node Config JSON file for initiating your Orbit chain is a  step in the deployment process. The Orbit SDK simplifies this task with an API named `prepareNodeConfig`. This API takes specific parameters for your Orbit chain and returns a JSON file that can be used as the Node Config to initiate the chain.
+Generating a Node Config JSON file to initiate your Orbit chain is a step in the deployment process. The Orbit SDK simplifies this task with an API named `prepareNodeConfig`. This API takes specific parameters for your Orbit chain and returns a JSON file that can be used as the Node Config to initiate the chain.
 
 Here’s an example of using the `prepareNodeConfig` API to generate the node config:
 
@@ -109,7 +109,7 @@ The parameters required for the `prepareNodeConfig` API are:
 2. `chainConfig`: This is the configuration used for chain deployment, detailed in the Rollup Orbit [Deployment section](deployment-rollup#4-chainconfig). It is obtained during the deployment process using the `createRollupPrepareTransactionReceipt` API.
 3. `coreContracts`: The addresses of the core contracts of your newly deployed Orbit chain, which are also obtained from the `createRollupPrepareTransactionReceipt` API.
 4. `batchPosterPrivateKey`: The private key of the batch-poster account, used for signing batch-posting transactions and related functions.
-5. `validatorPrivateKey`: The private key of the validator or validators, used for validating state and posting Rollup Blocks (`RBlocks`) to the parent chain, and initiating challenges if necessary.
+5. `validatorPrivateKey`: The private key of the validator or validators, used for validating state, posting Rollup Blocks (`RBlocks`) to the parent chain, and initiating challenges if necessary.
 6. `parentChainId`: The chain ID of the parent chain where your Orbit chain is deployed.
 7. `parentChainRpcUrl`: The RPC URL of the parent chain.
 
