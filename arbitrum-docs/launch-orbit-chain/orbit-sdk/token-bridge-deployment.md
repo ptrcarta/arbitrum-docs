@@ -52,7 +52,7 @@ Initiating the deployment of a token bridge for **[Custom Fee Token](/launch-orb
 
 The following example demonstrates how to leverage these APIs effectively to check for and, if necessary, grant approval to the `TokenBridgeCreator` contract:
 
-```bash
+```js
 const allowanceParams = {
   nativeToken,
   owner: rollupOwner.address,
@@ -75,7 +75,7 @@ This unique contract is capable of deploying the token bridge contracts on both 
 
 To streamline the deployment process, an API has been integrated into our Orbit SDK, designed to automate the deployment by interacting with the `TokenBridgeCreator` contract. The API is `createTokenBridgePrepareTransactionRequest`, which processes the necessary inputs and generates a transaction request tailored for token bridge deployment. Below is an illustrative example of how to use this API:
 
-```bash
+```js
 const txRequest = await createTokenBridgePrepareTransactionRequest({
   params: {
     rollup: rollupContractAddress,
@@ -94,7 +94,7 @@ Following the creation of the raw transaction, the next steps involve signing it
 ### 3. Transaction recipient and checking for deployment on child chain{#step-3}
 Following the dispatch of the deployment transaction, it's crucial to retrieve the transaction receipt and verify the successful deployment of the contracts on both the parent and child chains. Our Orbit SDK includes a dedicated API for this purpose, named `createTokenBridgePrepareTransactionReceipt`, which simplifies the process of obtaining the deployment transaction's recipient. An illustrative use of this API is as follows:
 
-```bash
+```js
 const txReceipt = createTokenBridgePrepareTransactionReceipt(
   await parentChainPublicClient.waitForTransactionReceipt({ hash: txHash }),
 );
@@ -104,7 +104,7 @@ In this scenario, **txHash** represents the hash of the deployment transaction i
 
 By employing the `waitForRetryables` method, one can ascertain the success of Retryable tickets on the parent chain. Here is how to use this API effectively:
 
-```bash
+```js
 const orbitChainRetryableReceipts = await txReceipt.waitForRetryables({
   orbitPublicClient: orbitChainPublicClient,
 });
@@ -124,7 +124,8 @@ In this example, the `waitForRetryables` method is invoked on the **txReceipt** 
 After deployment par finished and we are assure that the retryable tickets are successfult it's time to get the deployment information and all token bridge contract addresses.
 To get these information we have an API on Orbit SDK named `getTokenBridgeContracts`. This is a method for the token bridge recipient that you can use to retrieve the informtion.
 An example to get the contract addresses from the `txReceipt` generated on previous steps is as below:
-```bash
+
+```js
   const tokenBridgeContracts = await txReceipt.getTokenBridgeContracts({
     parentChainPublicClient,
   });
@@ -137,7 +138,8 @@ So after deployment of the token bridge and when you are assure about the succes
 
 **1. createTokenBridgePrepareSetWethGatewayTransactionRequest:**
 This API helps you to create the raw transaction which handles the set up of WETH gateway on both parent and child chain. An example to use this API is below:
-```bash
+
+```js
   const setWethGatewayTxRequest = await createTokenBridgePrepareSetWethGatewayTransactionRequest({
     rollup: rollupContractAddress,
     parentChainPublicClient,
@@ -150,12 +152,13 @@ This API helps you to create the raw transaction which handles the set up of WET
     },
   });
 ```
+
 In this example **rollupContractAddress** is the address of Orbit chain's rollup contract, **rollupOwnerAddress** is the address of rollup owner, **parentChainPublicClient** and **orbitChainPublicClient** are the parent and orbit chain public clients. Also this API has optional fields to override the Retryable ticket setups. In this example **percentIncrease** is the buffer to increase the gas limit for the retryable ticket to be sure about the success of the ticket.
 After creating the raw transaction you need to use Viem to sign and broadcast the transaction to the network.
 **2. createTokenBridgePrepareSetWethGatewayTransactionReceipt**
 After sending the transaction, you need get the recept of the transaction to be able to check about the success of the retryable tickets created on step 1, which is going to set WETH gateway on the Orbit chain. To do that we are using `createTokenBridgePrepareSetWethGatewayTransactionReceipt` API and also `waitForRetryables` method of it to check for the retryable ticket status. For the example in this doc we can use this API as follow:
 
-```bash
+```js
   const setWethGatewayTxReceipt = createTokenBridgePrepareSetWethGatewayTransactionReceipt(
     await parentChainPublicClient.waitForTransactionReceipt({ hash: setWethGatewayTxHash }),
   );
@@ -168,4 +171,5 @@ After sending the transaction, you need get the recept of the transaction to be 
     );
       console.log(`Retryables executed successfully`);
 ```
+
 In this example **setWethGatewayTxHash** is the hash of the transaction you sent to set the WETH gateway.
