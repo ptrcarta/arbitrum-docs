@@ -106,13 +106,13 @@ const nodeConfig = prepareNodeConfig({
 
 The parameters required for the `prepareNodeConfig` API are:
 
-1. **chainName**: The name you have chosen for your Orbit chain.
-2. **chainConfig**: This is the configuration used for chain deployment, detailed in the Rollup Orbit Deployment section ('#'). It is obtained during the deployment process using the `createRollupPrepareTransactionReceipt` API.
-3. **coreContracts**: The addresses of the core contracts of your newly deployed Orbit chain, which are also obtained from the `createRollupPrepareTransactionReceipt` API.
-4. **batchPosterPrivateKey**: The private key of the batch-poster account, used for signing batch-posting transactions and related functions.
-5. **validatorPrivateKey**: The private key of the validator or validators, used for validating state and posting Rollup Blocks (RBlocks) to the parent chain, and initiating challenges if necessary.
-6. **parentChainId**: The chain ID of the parent chain where your Orbit chain is deployed.
-7. **parentChainRpcUrl**: The RPC URL of the parent chain.
+1. `chainName`: The name you have chosen for your Orbit chain.
+2. `chainConfig`: This is the configuration used for chain deployment, detailed in the Rollup Orbit Deployment section ('#'). It is obtained during the deployment process using the `createRollupPrepareTransactionReceipt` API.
+3. `coreContracts`: The addresses of the core contracts of your newly deployed Orbit chain, which are also obtained from the `createRollupPrepareTransactionReceipt` API.
+4. `batchPosterPrivateKey`: The private key of the batch-poster account, used for signing batch-posting transactions and related functions.
+5. `validatorPrivateKey`: The private key of the validator or validators, used for validating state and posting Rollup Blocks (`RBlocks`) to the parent chain, and initiating challenges if necessary.
+6. `parentChainId`: The chain ID of the parent chain where your Orbit chain is deployed.
+7. `parentChainRpcUrl`: The RPC URL of the parent chain.
 
 In case you do not have the `chainConfig` and `coreContracts` readily available, you can obtain them using the `createRollupPrepareTransaction` and `createRollupPrepareTransactionReceipt` APIs. Here's an example of how to extract `chainConfig` and `coreContracts` using just the transaction hash from your deployment:
 
