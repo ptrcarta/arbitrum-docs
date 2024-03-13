@@ -85,7 +85,7 @@ The `Config` struct defines the chain's core settings, including block confirmat
    ```
 This nested structure within `Config` specifies time variations related to block sequencing, providing control over block delay and future block settings.
 
-#### 4. `chainConfig`{#chainConfig}
+#### 4. `chainConfig`
 
 The `chainConfig` parameter within the `Config` structure, is a critical component for customizing the Orbit chain. It's a stringified JSON object containing various configuration options that dictate how the Orbit chain behaves and interacts with the parent chain network. Here's a brief overview of the JSON structure:
 
