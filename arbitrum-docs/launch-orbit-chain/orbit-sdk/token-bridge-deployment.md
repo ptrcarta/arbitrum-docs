@@ -29,7 +29,7 @@ To establish and configure the token bridge effectively, the process can be brok
 
 :::info
 
-The token bridge deployment process depends on the type of Orbit chain. In the following steps, the main flow is the same for all different kinds of Orbit chains except [step 1](#step-1), which is only needed for **Custom fee token** Orbit chains, and [step 5](#step-5), just for ETH-based Orbit chains.
+The token bridge deployment process depends on the type of Orbit chain. In the following steps, the main flow is the same for all different kinds of Orbit chains except [step 1](#step-1), which is only needed for **Custom fee token** Orbit chains, and [step 5](#step-5), just for `ETH`-based Orbit chains.
 
 :::
 
