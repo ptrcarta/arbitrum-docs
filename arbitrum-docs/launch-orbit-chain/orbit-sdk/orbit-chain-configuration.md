@@ -7,17 +7,17 @@ sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 6
 ---
-In this guide, we will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain and node configuration to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
+This guide will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain and node configuration to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
 
-In the introductory section, we outlined three primary configurations necessary for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
+In the introductory section, we outlined three primary configurations required for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
 
 ## 1. Parent Chain Configuration
 Configuring the parent chain is an essential initial step in setting up your Orbit chain. Most of these configurations are specified during the setup phase. Detailed instructions can be found in the [Rollup Deployment Parameters](deployment-rollup#rollup-deployment-parameter) section of the rollup deployment guide. 
 
-After the initial setup, the chain owner has the flexibility to modify configurations as needed. For instance, the validator set can be updated by invoking the [`setValidKeyset`](https://github.com/OffchainLabs/nitro-contracts/blob/90037b996509312ef1addb3f9352457b8a99d6a6/src/bridge/SequencerInbox.sol#L751) function with a new set of validators. This adaptability facilitates continuous optimization and management of the chain.
+After the initial setup, the chain owner can modify configurations as needed. For instance, the validator set can be updated by invoking the [`setValidKeyset`](https://github.com/OffchainLabs/nitro-contracts/blob/90037b996509312ef1addb3f9352457b8a99d6a6/src/bridge/SequencerInbox.sol#L751) function with a new set of validators. This adaptability facilitates continuous optimization and management of the chain.
 
 ## 2. Node/Chain Configuration
-This category includes settings adjustable within the `nodeConfig.json` file, directly impacting the operation of the nodes of the chain, including special nodes like validators and sequencers. These settings are vital for tailoring the node's functionality to specific requirements or performance criteria. The chain owner can modify these configurations during the node config generation process, ensuring that each node operates with the desired settings from the start. For more information, refer to the [Node Configuration Preparation](node-config-preparation.md) documentation.
+This category includes settings adjustable within the `nodeConfig.json` file, directly impacting the operation of the chain's nodes, including special nodes like validators and sequencers. These settings are vital for tailoring the node's functionality to specific requirements or performance criteria. The chain owner can modify these configurations during the node config generation process, ensuring that each node operates with the desired settings from the start. For more information, refer to the [Node Configuration Preparation](node-config-preparation.md) documentation.
 
 ## 3. Child Chain Parameter Configuration
 The final configuration type involves setting parameters on the child chain. This level of configuration is primarily achieved through the [ArbOwner precompile](https://github.com/OffchainLabs/nitro-contracts/blob/main/src/precompiles/ArbOwner.sol) on the child chain. These configurations are typically applied post-chain initialization and after the deployment of the token bridge. This guide will help you configure child chain parameters using the Orbit SDK, providing insights into effective management and optimization strategies for your child chain operations.
@@ -33,11 +33,11 @@ You can use these setter functions to configure the child chain parameters:
 
 - `setMinimumL2BaseFee`: Sets the minimum base fee on the child chain. The minimum base fee is the lowest amount that the base fee on the child chain can ever be. For example, the current minimum base fee on Arbitrum One is 0.1 gwei, and on Arbitrum Nova, it is 0.01 gwei.
 
-- `setSpeedLimit`: The fee mechanism on the Arbitrum Nitro stack differs from the Ethereum blockchain. On the Nitro stack, there is a parameter called the speed limit, which targets the number of gas consumed on the child chain per second. If the amount of gas per second exceeds this pre-specified amount, the base fee on the child chain will increase, and vice versa. The current speed limit on Arbitrum One is 7 million gas per second, meaning if the Arbitrum One chain consumes more than 7 million gas per second, its base fee will increase. For more information on the speed limit, please refer to this [document explaining the concept of speed limit in the Nitro stack](https://docs.arbitrum.io/inside-arbitrum-nitro/#the-speed-limit).
+- `setSpeedLimit`: The fee mechanism on the Arbitrum Nitro stack differs from the Ethereum blockchain. The Nitro stack has a parameter called the speed limit, which targets the number of gas consumed on the child chain per second. If the amount of gas per second exceeds this pre-specified amount, the base fee on the child chain will increase, and vice versa. The current speed limit on Arbitrum One is 7 million gas per second, meaning if the Arbitrum One chain consumes more than 7 million gas per second, its base fee will increase. For more information on the speed limit, please refer to this [document explaining the concept of speed limit in the Nitro stack](https://docs.arbitrum.io/inside-arbitrum-nitro/#the-speed-limit).
 
 - `setInfraFeeAccount`: Sets the infrastructure fee account address, which receives all fees collected on the child chain. It is meant to receive the minimum base fee, with any amount above that going to the network fee account.
 
-- `setNetworkFeeAccount`: Sets the network fee account address. As mentioned, this address collects all fees above the base fee. Note that if you set this amount to the 0 address on your chain, then all fees will be deposited into the infrastructure fee account.
+- `setNetworkFeeAccount`: Sets the network fee account address. As mentioned, this address collects all fees above the base fee. Note that if you set this amount to the 0 address on your chain, all fees will be deposited into the infrastructure fee account.
 
 - `scheduleArbOSUpgrade`: If you plan to upgrade the <a data-quicklook-from="arbos">ArbOS</a> version of your chain, this method can help you schedule the upgrade. For a complete guide on this matter, please refer to the explanation of the [arbos upgrade](../how-tos/arbos-upgrade.md).
 
@@ -81,11 +81,11 @@ This method can be used to read the parameters of the child chain discussed in t
   });
 ```
 
-Note that changing the function names in the list in this [section](#getter-functions) will give you the other parameters.
+Changing the function names in the list in this [section](#getter-functions) will give you the other parameters.
 
 #### 2. arbOwnerPrepareTransactionRequest
 
-This method can be used to configure the parameters on the ArbOwner precompile and listed in this [section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
+This method can be used to configure the parameters on the ArbOwner precompile, which are listed in this [section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
 
 ```js
   // Adding a random address as chain owner using the upgrade executor
@@ -102,9 +102,9 @@ This method can be used to configure the parameters on the ArbOwner precompile a
   });
 ```
 
-To use this method, as shown in the example above, some inputs need to be defined. `functionName` is the name of the method you want to use to set the parameter, which can be found in [this section](#setter-functions). `args` are the arguments for the defined function. The `upgradeExecutor` field defines if your chain is governed by an upgradeExecutor contract or not. If it is not using an upgradeExecutor, you can set it to `false`, similar to the example above. Also, the `account` field defines the chain owner in case the chain is not governed by an upgradeExecutor.
+To use this method, as shown in the example above, some inputs need to be defined. `functionName` is the name of the method you want to use to set the parameter, which can be found in [this section](#setter-functions). `args` are the arguments for the defined function. The `upgradeExecutor` field specifies whether an `upgradeExecutor` contract governs your chain. If it is not using an `upgradeExecutor`, you can set it to `false`, similar to the example above. Also, the `account` field defines the chain owner if an `upgradeExecutor` does not govern the chain.
 
-If your chain is governed by an `upgradeExecutor` contract, then you need to use the arbOwnerPrepareTransactionRequest method, similar to the example below:
+If an `upgradeExecutor` contract governs your chain, then you need to use the `arbOwnerPrepareTransactionRequest` method, similar to the example below:
 
 ```js
   // Adding a random address as chain owner using the upgrade executor
