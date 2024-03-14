@@ -121,7 +121,8 @@ The `chainConfig` parameter within the `Config` `struct` is critical for customi
      };
    }
    ```
-    Out of these parameters, a few are particularly important and are likely to be configured by the chain owner: `chainId`, `DataAvailabilityCommittee`, `InitialChainOwner`, `MaxCodeSize`, and `MaxInitCodeSize`. While part of the chainConfig, the other parameters typically use default values and are less frequently modified. We will detail these essential parameters in the [Chain Config Parameter](#chain-config-parameter) section. Additionally, we'll guide you through using the Orbit SDK to effectively set and customize these configurations, ensuring that your Orbit chain is tailored to your specific requirements and operational needs.
+
+Out of these parameters, a few are particularly important and are likely to be configured by the chain owner: `chainId`, `DataAvailabilityCommittee`, `InitialChainOwner`, `MaxCodeSize`, and `MaxInitCodeSize`. While part of the chainConfig, the other parameters typically use default values and are less frequently modified. We will detail these essential parameters in the [Chain Config Parameter](#chain-config-parameter) section. Additionally, we'll guide you through using the Orbit SDK to effectively set and customize these configurations, ensuring that your Orbit chain is tailored to your specific requirements and operational needs.
 
 All the parameters explained in this section are customizable, allowing the chain deployer to stick with default settings or specify new values. In the upcoming sections, we will dive deeper into what each parameter represents and how you can utilize the Orbit SDK to configure them effectively for your Orbit chain deployment.
 

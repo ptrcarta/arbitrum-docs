@@ -9,7 +9,7 @@ sidebar_position: 4
 ---
 This guide explains how to use a Node Config JSON file to configure an Arbitrum Node, including essential settings for optimal operation, such as batch poster, validator, and overall chain configurations. It offers a roadmap for initiating and managing an Orbit chain, highlighting the critical steps and parameters involved in the configuration process.
 
-### Node Configuration
+## Node Configuration
 
 Once you have successfully deployed and initialized the Orbit core contracts, the next step is configuring and running your Orbit chain using a Node Config JSON file. This file is a comprehensive JSON object containing all the configurations for the Arbitrum Node, including settings for the Batch-poster, Validator, and the chain itself.
 
@@ -48,7 +48,7 @@ This configuration includes:
 - **HTTP Settings**: Configuration for the HTTP server.
 - **Node Settings**: Specific settings for the node, including sequencer and batch-poster configurations.
 
-#### Additional Configuration for Anytrust Orbit Chains:
+### Additional Configuration for Anytrust Orbit Chains:
 
 For Anytrust Orbit chains, the Node Config JSON has an additional segment under the `node` field. This addition includes settings specific to the Anytrust model, such as the sequencer inbox address, parent chain node URL, and configurations for the rest and RPC aggregators.
 
@@ -75,7 +75,7 @@ Example addition for Anytrust Node Config:
 };
 ```
 
-#### Preparing Your Node Config file:
+### Preparing Your Node Config file:
 
 The Node Config file includes three types of fields:
 
@@ -85,7 +85,7 @@ The Node Config file includes three types of fields:
 
 In upcoming sections, we'll explain how to configure these parameters and create a Node Config for your Orbit chain. This configuration is essential for initializing your chain and ensuring it runs according to your specifications. Proper configuration leads to an optimized, stable, and secure Orbit chain tailored to your project's requirements.
 
-#### Node Config Generation with Orbit SDK
+### Node Config Generation with Orbit SDK
 
 Generating a Node Config JSON file to initiate your Orbit chain is a step in the deployment process. The Orbit SDK simplifies this task with an API named `prepareNodeConfig`. This API takes specific parameters for your Orbit chain and returns a JSON file that can be used as the Node Config to initiate the chain.
 
