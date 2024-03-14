@@ -7,6 +7,7 @@ sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 6
 ---
+
 This guide will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain and node configuration to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
 
 In the introductory section, we outlined three primary configurations required for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
@@ -59,6 +60,7 @@ To read the child chain parameters, you can use these getter functions:
 
 In the Orbit SDK, we use the [Client Extension](https://viem.sh/docs/clients/custom#extending-with-actions-or-configuration) feature of Viem to extend the public client. In the Orbit SDK, we defined `arbOwnerPublicActions` to use it and extend the client on Viem. An example of creating a public client extended with arbOwner public actions is:
 
+
 ```js
 import { createPublicClient, http } from 'viem';
 import { arbOwnerPublicActions } from '@arbitrum/orbit-sdk';
@@ -70,6 +72,7 @@ const client = createPublicClient({
 ```
 
 With `arbOwnerPublicActions` and the public client in the Orbit SDK, we've added two new methods to the public clients:
+
 
 #### 1. arbOwnerReadContract 
 
@@ -119,8 +122,8 @@ If an `upgradeExecutor` contract governs your chain, then you need to use the `a
   await client.sendRawTransaction({
     serializedTransaction: await owner.signTransaction(transactionRequest),
   });
-
 ```
 
-In this example, all the fields are the same as in the first example, except the `upgradeExecutor` field, which you need to set to the upgradeExecutor address, and the `account` parameter, which needs to be set to the owner of the upgradeExecutor contract.
+
+In this example, all the fields are the same as in the first example, except the `upgradeExecutor` field, which you need to set to the `upgradeExecutor` address, and the `account` parameter, which needs to be set to the owner of the upgradeExecutor contract.
 
