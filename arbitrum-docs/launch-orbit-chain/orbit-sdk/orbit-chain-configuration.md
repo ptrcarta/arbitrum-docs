@@ -7,14 +7,14 @@ sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 6
 ---
-In this guide, we will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain, node configuration, to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
+In this guide, we will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain and node configuration to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
 
 In the introductory section, we outlined three primary configurations necessary for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
 
 ## 1. Parent Chain Configuration
 Configuring the parent chain is an essential initial step in setting up your Orbit chain. Most of these configurations are specified during the setup phase. Detailed instructions can be found in the [Rollup Deployment Parameters](deployment-rollup#rollup-deployment-parameter) section of the rollup deployment guide. 
 
-After the initial setup, the chain owner has the flexibility to modify configurations as needed. For instance, the validator set can be updated by invoking the [setValidKeyset](https://github.com/OffchainLabs/nitro-contracts/blob/90037b996509312ef1addb3f9352457b8a99d6a6/src/bridge/SequencerInbox.sol#L751) function with a new set of validators. This adaptability facilitates continuous optimization and management of the chain.
+After the initial setup, the chain owner has the flexibility to modify configurations as needed. For instance, the validator set can be updated by invoking the [`setValidKeyset`](https://github.com/OffchainLabs/nitro-contracts/blob/90037b996509312ef1addb3f9352457b8a99d6a6/src/bridge/SequencerInbox.sol#L751) function with a new set of validators. This adaptability facilitates continuous optimization and management of the chain.
 
 ## 2. Node/Chain Configuration
 This category includes settings adjustable within the `nodeConfig.json` file, directly impacting the operation of the nodes of the chain, including special nodes like validators and sequencers. These settings are vital for tailoring the node's functionality to specific requirements or performance criteria. The chain owner can modify these configurations during the node config generation process, ensuring that each node operates with the desired settings from the start. For more information, refer to the [Node Configuration Preparation](node-config-preparation.md) documentation.
@@ -27,14 +27,21 @@ The child chain configuration can be performed after the chain initialization. T
 ### Setter Functions
 You can use these setter functions to configure the child chain parameters:
 
-- addChainOwner: This method allows you to add a new chain owner to your Orbit chain.
-- removeChainOwner: This method enables you to remove an existing owner from the list of chain owners.
-- setMinimumL2BaseFee: This method sets the minimum base fee on the child chain. The minimum base fee is the lowest amount that the base fee on the child chain can ever be. For example, the current minimum base fee on Arbitrum One is 0.1 gwei, and on Arbitrum Nova, it is 0.01 gwei.
-- setSpeedLimit: The fee mechanism on the Arbitrum Nitro stack differs from the Ethereum blockchain. On the Nitro stack, there is a parameter called the speed limit, which targets the number of gas consumed on the child chain per second. If the amount of gas per second exceeds this pre-specified amount, the base fee on the child chain will increase, and vice versa. The current speed limit on Arbitrum One is 7 million gas per second, meaning if the Arbitrum One chain consumes more than 7 million gas per second, its base fee will increase. For more information on the speed limit, please refer to this [document](https://docs.arbitrum.io/inside-arbitrum-nitro/#the-speed-limit).
-- setInfraFeeAccount: This method sets the infrastructure fee account address, which receives all fees collected on the child chain. It is meant to receive the minimum base fee, with any amount above that going to the network fee account.
-- setNetworkFeeAccount: This method sets the network fee account address. As mentioned, this address collects all fees above the base fee. Note that if you set this amount to the 0 address on your chain, then all fees will be deposited into the infrastructure fee account.
-- scheduleArbOSUpgrade: If you plan to upgrade the ArbOS version of your chain, this method can help you schedule the upgrade. For a complete guide on this matter, please refer to this [document](../how-tos/arbos-upgrade.md).
-- setChainConfig: We discussed the chainConfig in this [section](deployment-rollup.md#chain-config-parameter) in detail. If you wish to change any field of the chainConfig, you need to use this method on the child chain.
+- `addChainOwner`: Allows you to add a new chain owner to your Orbit chain.
+
+- `removeChainOwner`: Enables you to remove an existing owner from the list of chain owners.
+
+- `setMinimumL2BaseFee`: Sets the minimum base fee on the child chain. The minimum base fee is the lowest amount that the base fee on the child chain can ever be. For example, the current minimum base fee on Arbitrum One is 0.1 gwei, and on Arbitrum Nova, it is 0.01 gwei.
+
+- `setSpeedLimit`: The fee mechanism on the Arbitrum Nitro stack differs from the Ethereum blockchain. On the Nitro stack, there is a parameter called the speed limit, which targets the number of gas consumed on the child chain per second. If the amount of gas per second exceeds this pre-specified amount, the base fee on the child chain will increase, and vice versa. The current speed limit on Arbitrum One is 7 million gas per second, meaning if the Arbitrum One chain consumes more than 7 million gas per second, its base fee will increase. For more information on the speed limit, please refer to this [document explaining the concept of speed limit in the Nitro stack](https://docs.arbitrum.io/inside-arbitrum-nitro/#the-speed-limit).
+
+- `setInfraFeeAccount`: Sets the infrastructure fee account address, which receives all fees collected on the child chain. It is meant to receive the minimum base fee, with any amount above that going to the network fee account.
+
+- `setNetworkFeeAccount`: Sets the network fee account address. As mentioned, this address collects all fees above the base fee. Note that if you set this amount to the 0 address on your chain, then all fees will be deposited into the infrastructure fee account.
+
+- `scheduleArbOSUpgrade`: If you plan to upgrade the <a data-quicklook-from="arbos">ArbOS</a> version of your chain, this method can help you schedule the upgrade. For a complete guide on this matter, please refer to the explanation of the [arbos upgrade](../how-tos/arbos-upgrade.md).
+
+- `setChainConfig`: We discussed the chainConfig in the [Rollup deployment guide](deployment-rollup.md#chain-config-parameter) in detail. If you wish to change any field of the `chainConfig`, you need to use this method on the child chain.
 
 ### Getter Functions
 
