@@ -47,16 +47,19 @@ You can use these setter functions to configure the child chain parameters:
 
 To read the child chain parameters, you can use these getter functions:
 
-- getAllChainOwners: This method provides the list of all current chain owners.
-- getNetworkFeeAccount: This method returns the network fee account address.
-- getInfraFeeAccount: This method returns the infrastructure fee account address.
-- isChainOwner: This method allows you to check whether an address is on the list of chain owners.
+- `getAllChainOwners`: Provides the list of all current chain owners.
+
+- `getNetworkFeeAccount`:  Returns the network fee account address.
+
+- `getInfraFeeAccount`:  Returns the infrastructure fee account address.
+
+- `isChainOwner`:  Allows you to check whether an address is on the list of chain owners.
 
 ### Configuring the Child Chain Using the Orbit SDK
 
 In the Orbit SDK, we use the [Client Extension](https://viem.sh/docs/clients/custom#extending-with-actions-or-configuration) feature of Viem to extend the public client. In the Orbit SDK, we defined `arbOwnerPublicActions` to use it and extend the client on Viem. An example of creating a public client extended with arbOwner public actions is:
 
-```bash
+```js
 import { createPublicClient, http } from 'viem';
 import { arbOwnerPublicActions } from '@arbitrum/orbit-sdk';
 
@@ -72,7 +75,7 @@ With `arbOwnerPublicActions` and the public client in the Orbit SDK, we've added
 
 This method can be used to read the parameters of the child chain discussed in the [previous section](#getter-functions). An example of using this method with the `client` defined in the previous section is:
 
-```bash
+```js
   const result = await client.arbOwnerReadContract({
     functionName: 'getAllChainOwners',
   });
@@ -84,7 +87,7 @@ Note that changing the function names in the list in this [section](#getter-func
 
 This method can be used to configure the parameters on the ArbOwner precompile and listed in this [section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
 
-```bash
+```js
   // Adding a random address as chain owner using the upgrade executor
   const transactionRequest = await client.arbOwnerPrepareTransactionRequest({
     functionName: 'addChainOwner',
@@ -103,7 +106,7 @@ To use this method, as shown in the example above, some inputs need to be define
 
 If your chain is governed by an `upgradeExecutor` contract, then you need to use the arbOwnerPrepareTransactionRequest method, similar to the example below:
 
-```bash
+```js
   // Adding a random address as chain owner using the upgrade executor
   const transactionRequest = await client.arbOwnerPrepareTransactionRequest({
     functionName: 'addChainOwner',
