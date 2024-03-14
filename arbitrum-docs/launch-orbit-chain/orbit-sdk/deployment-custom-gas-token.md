@@ -11,7 +11,7 @@ This guide explains how to deploy a custom gas token Orbit chain.
 
 ###### If you prefer to learn by code and want to skip the detailed guides, we recommend checking out the [ create a rollup custom fee token example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-custom-fee-token/index.ts) in the Orbit SDK repository. It's a practical, step-by-step guide to getting a Custom gas token Orbit chain running from scratch.
 
-Deploying a Custom Gas Token Orbit chain introduces a unique aspect to the standard Orbit chain setup: the ability to pay transaction fees using a specific `ERC20` token instead of `ETH`. While the setup process largely mirrors that of a standard <a data-quicklook-from="arbitrum-rollup-chain">Rollup Orbit chain</a> (as detailed in the [introduction](introduction.md), there are key differences to account for when configuring a Custom Gas Token Orbit chain.
+Deploying a Custom Gas Token Orbit chain introduces a unique aspect to the standard Orbit chain setup: the ability to pay transaction fees using a specific `ERC-20` token instead of `ETH`. While the setup process largely mirrors that of a standard <a data-quicklook-from="arbitrum-rollup-chain">Rollup Orbit chain</a> (as detailed in the [introduction](introduction.md), there are key differences to account for when configuring a Custom Gas Token Orbit chain.
 
 :::important
 
@@ -23,11 +23,11 @@ As mentioned in the [introduction page](introduction.md), only Anytrust chains c
 
 1. **Fee Token Specification:** 
 
-    The most significant difference is the specification of the `ERC20` token on the parent chain to be used as the gas fee token. This requires selecting an existing `ERC20` token or deploying a new one to be used specifically for transaction fees on your Orbit chain.
+    The most significant difference is the specification of the `ERC-20` token on the parent chain to be used as the gas fee token. This requires selecting an existing `ERC-20` token or deploying a new one to be used specifically for transaction fees on your Orbit chain.
     
-    **Note:** Currently, only `ERC20` tokens with 18 decimals are acceptable as gas tokens on Orbit chains.
+    **Note:** Currently, only `ERC-20` tokens with 18 decimals are acceptable as gas tokens on Orbit chains.
 
-2. **Chain Configuration**: When preparing the `chainConfig` using the Orbit SDK, you need to specify the chosen `ERC20` token address as the `nativeToken`. This step is crucial for the system to recognize and use your selected `ERC20` token for transaction fees.
+2. **Chain Configuration**: When preparing the `chainConfig` using the Orbit SDK, you need to specify the chosen `ERC-20` token address as the `nativeToken`. This step is crucial for the system to recognize and use your selected `ERC-20` token for transaction fees.
 **Note** that, as discussed above, the chain config needs to be set to Anytrust chain type, and `DataAvailabilityCommittee` should be set to `"true"`.
 
    Example:
@@ -36,7 +36,7 @@ As mentioned in the [introduction page](introduction.md), only Anytrust chains c
 
    const chainConfig = prepareChainConfig({
        chainId: Some_Chain_ID,
-       nativeToken: yourERC20TokenAddress,
+       nativeToken: yourERC-20TokenAddress,
        DataAvailabilityCommittee: true,
    });
    ```
@@ -83,7 +83,7 @@ As mentioned in the [introduction page](introduction.md), only Anytrust chains c
 
 ### Deployment Process
 
-The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to the [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the `ERC20` token details into these configurations.
+The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to the [Rollup deployment](deployment-rollup.md) process. However, attention must be given to incorporating the `ERC-20` token details into these configurations.
 
 :::note
 
