@@ -106,7 +106,7 @@ const nodeConfig = prepareNodeConfig({
 The parameters required for the `prepareNodeConfig` API are:
 
 1. `chainName`: The name you have chosen for your Orbit chain.
-2. `chainConfig`: This is the configuration used for chain deployment, detailed in the Rollup Orbit [Deployment section](deployment-rollup#4-chainconfig). It is obtained during the deployment process using the `createRollupPrepareTransactionReceipt` API.
+2. `chainConfig`: This is the configuration used for chain deployment, detailed in the Rollup Orbit [Deployment section](deploying-rollup-chain-with-sdk#4-chainconfig). It is obtained during the deployment process using the `createRollupPrepareTransactionReceipt` API.
 3. `coreContracts`: The addresses of the core contracts of your newly deployed Orbit chain, which are also obtained from the `createRollupPrepareTransactionReceipt` API.
 4. `batchPosterPrivateKey`: The private key of the batch-poster account, used for signing batch-posting transactions and related functions.
 5. `validatorPrivateKey`: The private key of the validator or validators, used for validating state, posting Rollup Blocks (`RBlocks`) to the parent chain, and initiating challenges if necessary.
