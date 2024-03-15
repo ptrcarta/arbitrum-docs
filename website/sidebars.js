@@ -528,37 +528,37 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/introduction',
+              id: 'launch-orbit-chain/orbit-sdk/orbit-sdk-introduction',
               label: `Introduction`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/deployment-rollup',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/deploying-rollup-chain-with-sdk',
               label: `Rollup Orbit Deployment`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/deployment-anytrust',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/deploying-anytrust-chain-with-sdk',
               label: `Anytrust Orbit Deployment`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/deployment-custom-gas-token',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/deploying-custom-gas-token-chain-with-sdk',
               label: `Custom Gas Token Orbit Deployment`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/node-config-preparation',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/preparing-node-config-with-sdk',
               label: `Node Config Generation`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/token-bridge-deployment',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/deploying-token-bridge-with-sdk',
               label: `Token bridge deployment`,
             },
             {
               type: 'doc',
-              id: 'launch-orbit-chain/orbit-sdk/orbit-chain-configuration',
+              id: 'launch-orbit-chain/orbit-sdk/how-tos/configuring-orbit-chain-with-sdk',
               label: `Orbit Chain Configuration`,
             },
           ],
