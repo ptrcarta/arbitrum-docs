@@ -1,13 +1,12 @@
 ---
-title: 'Custom Gas Token Orbit Deployment'
+title: 'How to deploy a custom gas token chain using the Orbit SDK'
 sidebar_label: 'Custom Gas Token Orbit Deployment'
-description: 'Arbitrum SDK '
+description: 'How to deploy a custom gas token chain using the Orbit SDK'
 author: Mehdi Salehi
 sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 3
 ---
-This guide explains how to deploy a custom gas token Orbit chain.
 
 ###### If you prefer to learn by code and want to skip the detailed guides, we recommend checking out the [ create a rollup custom fee token example](https://github.com/OffchainLabs/arbitrum-orbit-sdk/blob/main/examples/create-rollup-custom-fee-token/index.ts) in the Orbit SDK repository. It's a practical, step-by-step guide to getting a Custom gas token Orbit chain running from scratch.
 
