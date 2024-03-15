@@ -1,7 +1,7 @@
 ---
-title: 'Node Config Generation'
+title: 'How to configure a node using the Orbit SDK'
 sidebar_label: 'Node Config Generation'
-description: 'Arbitrum SDK '
+description: 'How to configure a node using the Orbit SDK'
 author: Mehdi Salehi
 sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
@@ -9,7 +9,6 @@ sidebar_position: 4
 ---
 This guide explains how to use a Node Config JSON file to configure an Arbitrum Node, including essential settings for optimal operation, such as batch poster, validator, and overall chain configurations. It offers a roadmap for initiating and managing an Orbit chain, highlighting the critical steps and parameters involved in the configuration process.
 
-## Node Configuration
 
 Once you have successfully deployed and initialized the Orbit core contracts, the next step is configuring and running your Orbit chain using a Node Config JSON file. This file is a comprehensive JSON object containing all the configurations for the Arbitrum Node, including settings for the Batch-poster, Validator, and the chain itself.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Token bridge deployment'
+title: 'How to deploy a token bridge using the Orbit SDK'
 sidebar_label: 'Token bridge deployment'
-description: 'Arbitrum SDK '
+description: 'How to deploy a token bridge using the Orbit SDK '
 author: Mehdi Salehi
 sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'

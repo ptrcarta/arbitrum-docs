@@ -1,7 +1,7 @@
 ---
-title: 'Orbit Chain Configuration Guide'
+title: 'How to configure an Orbit chain using the Orbit SDK'
 sidebar_label: 'Orbit Chain Configuration'
-description: 'Arbitrum SDK '
+description: 'How to configure an Orbit chain using the Orbit SDK '
 author: Mehdi Salehi
 sme: Mehdi Salehi
 target_audience: 'Developers deploying and maintaining Orbit chains.'
