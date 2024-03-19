@@ -104,7 +104,14 @@ This method can be used to configure the parameters on the ArbOwner precompile, 
   });
 ```
 
-To use this method, as shown in the example above, some inputs need to be defined. `functionName` is the name of the method you want to use to set the parameter, which can be found in [this section](#setter-functions). `args` are the arguments for the defined function. The `upgradeExecutor` field specifies whether an `upgradeExecutor` contract governs your chain. If it is not using an `upgradeExecutor`, you can set it to `false`, similar to the example above. Also, the `account` field defines the chain owner if an `upgradeExecutor` does not govern the chain.
+To use this method as shown in the example above, some inputs need to be defined:
+
+| Parameter        | Description                                                                                                                                                                 |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `functionName`   | The name of the method you want to use to set the parameter, which can be found in [the Setter functions section](#setter-functions).                                        |
+| `args`           | The arguments for the defined function.                                                                                                                                     |
+| `upgradeExecutor`| Specifies whether an `upgradeExecutor` contract governs your chain. If it is not using an `upgradeExecutor`, you can set it to `false`, similar to the example above.       |
+| `account`        | Defines the chain owner if an `upgradeExecutor` does not govern the chain.                                                                                                  |
 
 If an `upgradeExecutor` contract governs your chain, then you need to use the `arbOwnerPrepareTransactionRequest` method, similar to the example below:
 
