@@ -131,5 +131,5 @@ If an `upgradeExecutor` contract governs your chain, then you need to use the `a
 ```
 
 
-In this example, all the fields are the same as in the first example, except the `upgradeExecutor` field, which you need to set to the `upgradeExecutor` address, and the `account` parameter, which needs to be set to the owner of the upgradeExecutor contract.
+In this example, all the fields are the same as in the first example, except the `upgradeExecutor` field, which you need to set to the `upgradeExecutor` address, and the `account` parameter, which needs to be set to the owner of the `upgradeExecutor` contract.
 
