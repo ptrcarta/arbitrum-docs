@@ -87,7 +87,7 @@ Changing the function names in the list in [the Getter functions section](#gette
 
 #### 2. `arbOwnerPrepareTransactionRequest`
 
-This method can be used to configure the parameters on the ArbOwner precompile, which are listed in this [section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
+This method can be used to configure the parameters on the ArbOwner precompile, which are listed in [the Setter functions section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
 
 ```js
   // Adding a random address as chain owner using the upgrade executor
