@@ -40,7 +40,7 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
    });
    ```
 
-3. **Token Approval before deployment process**
+3. **Token Approval before Deployment Process**
 
     In Custom gas token Orbit chains, the owner needs to give allowance to the `rollupCreator` contract before starting the deployment process so that `RollupCreator` can spend enough tokens for the deployment process. For this purpose, we defined two APIs on the Orbit SDK:
 
