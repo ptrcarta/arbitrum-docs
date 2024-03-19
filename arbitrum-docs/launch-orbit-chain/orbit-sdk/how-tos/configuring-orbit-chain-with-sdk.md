@@ -85,7 +85,7 @@ This method can be used to read the parameters of the child chain discussed in t
 
 Changing the function names in the list in this [section](#getter-functions) will give you the other parameters.
 
-#### 2. arbOwnerPrepareTransactionRequest
+#### 2. `arbOwnerPrepareTransactionRequest`
 
 This method can be used to configure the parameters on the ArbOwner precompile, which are listed in this [section](#setter-functions). An example of utilizing this method to configure parameters using the `client` defined in the previous section is:
 
