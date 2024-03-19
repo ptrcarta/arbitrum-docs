@@ -83,7 +83,7 @@ This method can be used to read the parameters of the child chain discussed in t
   });
 ```
 
-Changing the function names in the list in this [section](#getter-functions) will give you the other parameters.
+Changing the function names in the list in [the Getter functions section](#getter-functions) will give you the other parameters.
 
 #### 2. `arbOwnerPrepareTransactionRequest`
 
