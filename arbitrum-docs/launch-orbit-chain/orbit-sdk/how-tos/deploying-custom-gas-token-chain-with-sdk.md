@@ -44,7 +44,7 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
 
     In Custom gas token Orbit chains, the owner needs to give allowance to the `rollupCreator` contract before starting the deployment process so that `RollupCreator` can spend enough tokens for the deployment process. For this purpose, we defined two APIs on the Orbit SDK:
 
-   A. `createRollupEnoughCustomFeeTokenAllowance`
+   A. createRollupEnoughCustomFeeTokenAllowance
    
     This API gets related inputs and checks if the `rollupCreator` contract has enough Allowance on the token from the owner.
    
@@ -60,7 +60,7 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
     const enough Allowance = createRollupEnoughCustomFeeTokenAllowance(allowanceParams)
     ```
 
-   B. `createRollupPrepareCustomFeeTokenApprovalTransactionRequest`
+   B. createRollupPrepareCustomFeeTokenApprovalTransactionRequest
    
     This API gets related inputs and creates the transaction request to secure enough Allowance from the owner to the `RollupCreator` to spend `nativeToken` on the deployment process.
     
