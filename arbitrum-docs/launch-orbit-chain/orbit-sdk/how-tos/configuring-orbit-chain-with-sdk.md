@@ -10,7 +10,6 @@ sidebar_position: 6
 
 In this how-to, you'll learn how to configure your Orbit chain using the Orbit SDK. This includes **parent chain**, **node**, and **child chain parameter** configuration.
 
-In the introductory section, we outlined three primary configurations required for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
 
 ## 1. Parent Chain Configuration
 Configuring the parent chain is an essential initial step in setting up your Orbit chain. Most of these configurations are specified during the setup phase. Detailed instructions can be found in the [Rollup Deployment Parameters](deploying-rollup-chain-with-sdk#rollup-deployment-parameter) section of the rollup deployment guide. 
