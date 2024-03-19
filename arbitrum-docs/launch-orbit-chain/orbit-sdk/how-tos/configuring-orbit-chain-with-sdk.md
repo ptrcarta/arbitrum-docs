@@ -16,7 +16,7 @@ Configuring the parent chain is an essential initial step in setting up your Orb
 
 After the initial setup, the chain owner can modify configurations as needed. For instance, the validator set can be updated by invoking the [`setValidKeyset`](https://github.com/OffchainLabs/nitro-contracts/blob/90037b996509312ef1addb3f9352457b8a99d6a6/src/bridge/SequencerInbox.sol#L751) function with a new set of validators. This adaptability facilitates continuous optimization and management of the chain.
 
-## 2. Node/Chain Configuration
+## 2. Node configuration
 This category includes settings adjustable within the `nodeConfig.json` file, directly impacting the operation of the chain's nodes, including special nodes like validators and sequencers. These settings are vital for tailoring the node's functionality to specific requirements or performance criteria. The chain owner can modify these configurations during the node config generation process, ensuring that each node operates with the desired settings from the start. For more information, refer to the [Node Configuration Preparation](preparing-node-config-with-sdk.md) documentation.
 
 ## 3. Child Chain Parameter Configuration
