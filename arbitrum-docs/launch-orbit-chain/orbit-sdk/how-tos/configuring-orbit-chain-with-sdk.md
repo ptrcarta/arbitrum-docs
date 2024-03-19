@@ -8,7 +8,7 @@ target_audience: 'Developers deploying and maintaining Orbit chains.'
 sidebar_position: 6
 ---
 
-This guide will explore the essentials of configuring your Orbit chain. Configuration includes a range of settings from the parent chain and node configuration to specific child chain parameter configurations. Our focus here is on child chain configuration, guiding you through the necessary adjustments to customize your chain's operation.
+In this how-to, you'll learn how to configure your Orbit chain using the Orbit SDK. This includes **parent chain**, **node**, and **child chain parameter** configuration.
 
 In the introductory section, we outlined three primary configurations required for setting up and managing an Orbit chain. These configurations play a crucial role in ensuring the efficient operation of your chain. Let's delve into each type:
 
