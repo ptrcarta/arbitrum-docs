@@ -26,8 +26,9 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
     
     **Note:** Currently, only `ERC-20` tokens with 18 decimals are acceptable as gas tokens on Orbit chains.
 
-2. **Chain Configuration**: When preparing the `chainConfig` using the Orbit SDK, you need to specify the chosen `ERC-20` token address as the `nativeToken`. This step is crucial for the system to recognize and use your selected `ERC-20` token for transaction fees.
-**Note** that, as discussed above, the chain config needs to be set to Anytrust chain type, and `DataAvailabilityCommittee` should be set to `"true"`.
+2. **Chain Configuration**
+
+You can configure your Orbit chain using the `prepareChainConfig` method and assigning it to a `chainConfig` variable.
 
    Example:
    ```js
@@ -39,6 +40,15 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
        DataAvailabilityCommittee: true,
    });
    ```
+
+To use the `prepareChainConfig` method as shown in the example above, some inputs need to be defined:
+
+| Parameter                   | Type         |  Description                                                                                                                                 |
+|-----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `chainId`                   |  `number`    |  Your Orbit chain's `chainId`.                                                                                                               |
+| `nativeToken`               |  `Address`   |  The contract address of the `ERC-20` token your chain will use for `gas` fees. It needs to have 18 decimals to be accepted on Orbit chains. |
+| `DataAvailabilityCommittee` |  `boolean`   |  Should be set to `true` since only Anytrust chains can accept `ERC-20` tokens.                                                              |
+
 
 3. **Token Approval before Deployment Process**
 
@@ -79,7 +89,7 @@ To build the `allowanceParams` object as shown in the example above, you need to
 
     const allowanceParams = {
     nativeToken,
-    account: deployer_address,
+    account: deployer.address,
     publicClient: parentChainPublicClient,
     };
 
@@ -87,7 +97,6 @@ To build the `allowanceParams` object as shown in the example above, you need to
         allowanceParams,
     );
     ```
-
 ### Deployment Process
 
 The overall deployment process, including the use of APIs like `createRollupPrepareConfig` and `createRollupPrepareTransactionRequest`, remains similar to the [Rollup deployment](deploying-rollup-chain-with-sdk.md) process. However, attention must be given to incorporating the `ERC-20` token details into these configurations.
