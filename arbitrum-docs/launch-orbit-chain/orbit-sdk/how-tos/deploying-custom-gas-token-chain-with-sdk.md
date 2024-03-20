@@ -53,12 +53,20 @@ As mentioned in the [introduction page](../orbit-sdk-introduction.md), only Anyt
 
     const allowanceParams = {
     nativeToken,
-    account: deployer_address,
+    account: deployer.address,
     publicClient: parentChainPublicClient,
     };
 
     const enough Allowance = createRollupEnoughCustomFeeTokenAllowance(allowanceParams)
     ```
+
+To build the `allowanceParams` object as shown in the example above, you need to provide with the following:
+
+| Parameter                   | Type            |  Description                                                                                                                               |
+|-----------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `nativeToken`               |  `Address`      |  The contract address of the `ERC-20` token your chain will use for `gas` fees.                                                              |
+| `account`                   |  `Address`      |  The  address  Orbit chain's|
+| `publicClient`              |  `PublicClient` |  The `PublicClient` object [as defined by the Viem library](https://viem.sh/docs/clients/public.html).                                       |
 
    B. createRollupPrepareCustomFeeTokenApprovalTransactionRequest
    
